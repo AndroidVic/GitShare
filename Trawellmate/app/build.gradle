@@ -32,4 +32,5 @@ dependencies {
     implementation 'com.android.support:design:29.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.0.3'
 }

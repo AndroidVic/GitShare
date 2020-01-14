@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Trawellmate</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="phone_no">Phone no</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="verify">Verify</string>
+    <string name="already_hv_act">Already have an account?</string>
+    <string name="sign_in">Sign in</string>
+    <string name="otp_msg">Please enter the verification code</string>
+
 </resources>
