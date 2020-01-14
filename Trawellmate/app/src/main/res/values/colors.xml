@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#4BAAFF</color>
-    <color name="colorPrimaryDark">#667EEA</color>
-    <color name="colorAccent">#4A5DAF</color>
+    <color name="colorPrimaryDark">#4A5DAF</color>
+    <color name="colorAccent">#667EEA</color>
 
     <color name="text_color_white">#ffffff</color>
+<!--    <color name="card_diff_color">#FFFDFD</color>-->
+    <color name="card_diff_color">#F0EEEE</color>
+    <color name="text_color_black">#2E2E2E</color>
+    <!--    E2E2E1-->
 
 </resources>
