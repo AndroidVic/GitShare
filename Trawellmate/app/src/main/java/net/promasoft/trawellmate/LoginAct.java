@@ -94,6 +94,12 @@ public class LoginAct extends AppCompatActivity {
                 startActivity(new Intent(LoginAct.this, HomeAct.class));
             }
         });
+
+        CustomTextLink signUpText = findViewById(R.id.ID_signup_text);
+        signUpText.setOnClickListener(view -> {
+            startActivity(new Intent(LoginAct.this, SignupActivity.class));
+        });
+
     }
 
     private void startAnim(final View view, int delay, final int anim) {

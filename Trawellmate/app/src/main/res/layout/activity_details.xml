@@ -20,12 +20,15 @@
             android:minHeight="70dp"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
+
             <RelativeLayout
                 android:id="@+id/action_bar_lay"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
+                android:layout_marginBottom="50dp"
                 app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="-0.5">
+                app:layout_collapseParallaxMultiplier="0.5">
+
                 <!--//300-->
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -41,17 +44,28 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/home_dummy" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="60dp"
-                        android:layout_marginTop="60dp"
-                        android:text="Package Details"
-                        android:textColor="#ffffff"
-                        android:textSize="@dimen/text_size_large"
-                        android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:src="#2F000000" />
+
 
                 </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_share"
+                    android:tint="#ffffff" />
 
             </RelativeLayout>
 
@@ -62,19 +76,79 @@
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.7">
 
-                <ImageView
-                    android:id="@+id/ID_menu_iv"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_arrow_back"
-                    android:tint="#ffffff" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/ID_menu_iv"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_arrow_back"
+                        android:tint="#ffffff" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/open_san_script"
+                        android:text="Package Details"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="20dp"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_saved"
+                        android:tint="#ffffff" />
+
+                </LinearLayout>
 
 
             </RelativeLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="-100dp"
+                android:src="#FFFFFF"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="-0.25" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Andaman and Nicobar"
+                android:textColor="#333232"
+                android:textSize="@dimen/text_size_extra_large"
+                android:textStyle="bold"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="-0.05" />
+
+            <ImageView
+                android:id="@+id/ID_sts_bg_lay"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@drawable/grad_theme"
+                android:elevation="10dp"
+                android:visibility="invisible"
+                app:layout_collapseMode="pin" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -88,33 +162,1150 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/ID_nested_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RatingBar
+                        style="@style/FoursquareReviewRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="20dp"
+                        android:numStars="5"
+                        android:rating="4.5"
+                        android:theme="@style/FoursquareReviewRating" />
+
+                    <net.promasoft.trawellmate.dsgn.CustomTextLink
+                        android:id="@+id/ID_write_review"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="2dp"
+                        android:text="Write a Review"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_small" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <net.promasoft.trawellmate.dsgn.CircleImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/cus_img1" />
+
+                    <net.promasoft.trawellmate.dsgn.CircleImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/cus_img2" />
+
+                    <net.promasoft.trawellmate.dsgn.CircleImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/cus_img3" />
+
+                    <net.promasoft.trawellmate.dsgn.CircleImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/cus_img4" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:text="49+"
+                        android:textColor="@color/colorAccent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="3dp"
+                        android:text="People Reviewd this" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Andaman and Nicobar island known for its forested volcanic mountains, iconic rice paddies." />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="READ MORE"
+                    android:textColor="@color/colorAccent" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginVertical="10dp"
-                    android:text="Andaman and Nicobar"
+                    android:text="Pictures"
                     android:textColor="#333232"
-                    android:textSize="@dimen/text_size_extra_large"
+                    android:textSize="@dimen/text_size_large"
                     android:textStyle="bold" />
 
-                <RatingBar
-                    style="@style/FoursquareReviewRating"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginHorizontal="20dp"
-                    android:numStars="5"
-                    android:rating="3"
-                    android:theme="@style/FoursquareReviewRating" />
+                    android:layout_marginStart="20dp"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="178dp"
+                            android:layout_height="187dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/demo_pack1_1" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginStart="10dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="88dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/demo_pack1_2" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="88dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/demo_pack1_2" />
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <!--                About the tour-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:id="@+id/expand"
+                        android:layout_width="match_parent"
+                        android:layout_height="210dp"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/grey_card_bg">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="40dp"
+                            android:alpha=".7"
+                            android:src="@drawable/itinerary_bg" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="20dp"
+                                android:fontFamily="@font/open_san_script"
+                                android:text="About The Tour"
+                                android:textColor="@color/text_color_black"
+                                android:textSize="@dimen/text_size_extra_large" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="top"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/open_san_script"
+                                        android:text="Cochin"
+                                        android:textSize="@dimen/text_size_large" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:text="• Sight seeing"
+                                        android:textSize="@dimen/text_size_small" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+
+                                        android:text="• Service Tax Will Be Extra."
+                                        android:textSize="@dimen/text_size_small" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:gravity="start"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/open_san_script"
+                                        android:text="Munnar"
+                                        android:textSize="@dimen/text_size_large" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+
+                                        android:text="• Transportation"
+                                        android:textSize="@dimen/text_size_small" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+
+                                        android:text="• GST 5%"
+                                        android:textSize="@dimen/text_size_small" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/open_san_script"
+                                        android:text="Thekkady"
+                                        android:textSize="@dimen/text_size_large" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+
+                                        android:text="• Accommodation"
+                                        android:textSize="@dimen/text_size_small" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+
+                                        android:text="• Professional Guide"
+                                        android:textSize="@dimen/text_size_small" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="• "
+                                            android:textSize="@dimen/text_size_small" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="The Mentioned Hotels -resorts Are Subject to Availability. In Case Of Non-availability Of Accommodation. At The Above Hotels"
+                                            android:textSize="@dimen/text_size_small" />
+
+                                    </LinearLayout>
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+
+                                        android:gravity="center"
+                                        android:text="• Equivalent Accommodation Would Be Provided"
+                                        android:textSize="@dimen/text_size_small" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+
+                                        android:text="• Starting Category Rooms Provided At All The Hotels"
+                                        android:textSize="@dimen/text_size_small" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+
+                                        android:text="• Non AC Rooms Will Be Provided In Hill Stations"
+                                        android:textSize="@dimen/text_size_small" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+
+                                        android:text="• Not Valid For Long Weekends"
+                                        android:textSize="@dimen/text_size_small" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/indicator_down"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center|bottom"
+                            android:layout_marginBottom="-5dp"
+                            android:layout_weight="0"
+                            android:padding="4dp"
+                            android:src="@drawable/ic_arrow_down"
+                            android:tint="#B8B8B8" />
+                    </FrameLayout>
+
+                    <ImageView
+                        android:id="@+id/ID_preexpnd_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <!--                Day wise -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/grey_card_bg"
+                    android:orientation="vertical"
+                    android:paddingVertical="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|left"
+                        android:layout_marginHorizontal="20dp"
+                        android:fontFamily="@font/open_san_script"
+                        android:text="Detailed Day Wise Itinerary"
+                        android:textColor="@color/text_color_black"
+                        android:textSize="@dimen/text_size_extra_large" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/ID_daywise_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp" />
+                </LinearLayout>
+
+                <!--                places like -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/open_san_script"
+                        android:text="Places like Andaman and Nicobar"
+                        android:textColor="@color/text_color_black"
+                        android:textSize="@dimen/text_size_extra_large" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="180dp"
+                                android:layout_height="120dp"
+                                android:layout_marginVertical="20dp"
+                                android:layout_marginStart="20dp"
+                                app:cardCornerRadius="10dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/demo_pack3" />
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentBottom="true"
+                                            android:background="#31000000"
+                                            android:paddingHorizontal="20dp"
+                                            android:paddingVertical="6dp">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginVertical="10dp"
+                                                android:text="Kulu Manali"
+                                                android:textColor="#ffffff"
+                                                android:textSize="@dimen/text_size_medium" />
+
+                                        </RelativeLayout>
+
+                                    </RelativeLayout>
+
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="180dp"
+                                android:layout_height="120dp"
+                                android:layout_marginVertical="20dp"
+                                android:layout_marginStart="20dp"
+                                app:cardCornerRadius="10dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_alignParentBottom="true"
+                                            android:layout_marginEnd="0dp"
+                                            android:layout_marginBottom="0dp"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/demo_pack4" />
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentBottom="true"
+                                            android:background="#31000000"
+                                            android:paddingHorizontal="20dp"
+                                            android:paddingVertical="6dp">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginVertical="10dp"
+                                                android:text="Maldives"
+                                                android:textColor="#ffffff"
+                                                android:textSize="@dimen/text_size_medium" />
+
+                                        </RelativeLayout>
+
+                                    </RelativeLayout>
+
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="180dp"
+                                android:layout_height="120dp"
+                                android:layout_marginVertical="20dp"
+                                android:layout_marginStart="20dp"
+                                app:cardCornerRadius="10dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/demo_pack3" />
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentBottom="true"
+                                            android:background="#31000000"
+                                            android:paddingHorizontal="20dp"
+                                            android:paddingVertical="6dp">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginVertical="10dp"
+                                                android:text="Kulu Manali"
+                                                android:textColor="#ffffff"
+                                                android:textSize="@dimen/text_size_medium" />
+
+                                        </RelativeLayout>
+
+                                    </RelativeLayout>
+
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+                <!--                review-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_marginRight="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingBottom="10dp"
+                        app:cardBackgroundColor="#fff"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="20dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/reviews"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/open_san_script"
+                                    android:gravity="start"
+                                    android:text="Reviews"
+                                    android:textColor="@color/text_color_black"
+                                    android:textSize="@dimen/text_size_extra_large" />
+
+                                <TextView
+                                    android:id="@+id/wreviews"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="0"
+                                    android:gravity="left"
+                                    android:text="Write a review"
+                                    android:textColor="#FFAA00"
+                                    android:textSize="15dp" />
+
+                                <ImageView
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_weight="0"
+                                    android:src="@drawable/ic_arrow_right"
+                                    android:tint="#FFAA00" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/rating_value"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:text="4.3"
+                                        android:textColor="#FFFFAA00"
+                                        android:textSize="@dimen/text_size_ultra_large" />
+
+                                    <TextView
+                                        android:id="@+id/rating_text"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="10dp"
+                                        android:text="out of 5"
+                                        android:textColor="#0C0C0B"
+                                        android:textSize="@dimen/text_size_medium" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:gravity="right"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RatingBar
+                                            style="@style/FoursquareReviewRating"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_toRightOf="@id/rating_value"
+                                            android:numStars="5"
+                                            android:rating="5"
+                                            android:rotation="180"
+                                            android:scaleX="0.7"
+                                            android:scaleY="0.7"
+                                            android:theme="@style/FoursquareReviewRating" />
+
+                                        <ProgressBar
+                                            style="?android:attr/progressBarStyleHorizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="15dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginTop="1dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_weight="1"
+                                            android:max="5"
+                                            android:progress="4"
+                                            android:theme="@style/AppTheme.WhiteAccent" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RatingBar
+                                            style="@style/FoursquareReviewRating"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_toRightOf="@id/rating_value"
+                                            android:numStars="5"
+                                            android:rating="4"
+                                            android:rotation="180"
+                                            android:scaleX="0.7"
+                                            android:scaleY="0.7"
+                                            android:theme="@style/FoursquareReviewRating" />
+
+                                        <ProgressBar
+                                            style="?android:attr/progressBarStyleHorizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="15dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginTop="1dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_weight="1"
+                                            android:max="5"
+                                            android:progress="3"
+                                            android:theme="@style/AppTheme.WhiteAccent" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RatingBar
+                                            style="@style/FoursquareReviewRating"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_toRightOf="@id/rating_value"
+                                            android:numStars="5"
+                                            android:rating="3"
+                                            android:rotation="180"
+                                            android:scaleX="0.7"
+                                            android:scaleY="0.7"
+
+                                            android:theme="@style/FoursquareReviewRating" />
+
+                                        <ProgressBar
+                                            style="?android:attr/progressBarStyleHorizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="15dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginTop="1dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_weight="1"
+                                            android:max="5"
+                                            android:progress="1"
+                                            android:theme="@style/AppTheme.WhiteAccent" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RatingBar
+                                            style="@style/FoursquareReviewRating"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_toRightOf="@id/rating_value"
+                                            android:numStars="5"
+                                            android:rating="2"
+                                            android:rotation="180"
+                                            android:scaleX="0.7"
+                                            android:scaleY="0.7"
+                                            android:theme="@style/FoursquareReviewRating" />
+
+                                        <ProgressBar
+                                            style="?android:attr/progressBarStyleHorizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="15dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginTop="1dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_weight="1"
+                                            android:max="5"
+                                            android:progress="0"
+                                            android:theme="@style/AppTheme.WhiteAccent" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RatingBar
+                                            style="@style/FoursquareReviewRating"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_toRightOf="@id/rating_value"
+                                            android:numStars="5"
+                                            android:rating="1"
+                                            android:rotation="180"
+                                            android:scaleX="0.7"
+                                            android:scaleY="0.7"
+                                            android:theme="@style/FoursquareReviewRating" />
+
+                                        <ProgressBar
+                                            style="?android:attr/progressBarStyleHorizontal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="15dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginTop="1dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_weight="1"
+                                            android:max="5"
+                                            android:progress="0"
+                                            android:theme="@style/AppTheme.WhiteAccent" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/user_review_card1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingBottom="10dp"
+                        app:cardBackgroundColor="#fff"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="3dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_marginVertical="15dp"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:orientation="horizontal">
+
+                                <net.promasoft.trawellmate.dsgn.CircleImageView
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/userimg_1" />
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:gravity="left"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:id="@+id/person_1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_weight="1"
+                                            android:gravity="start"
+                                            android:text="John Doe"
+                                            android:textColor="@color/text_color_black"
+                                            android:textSize="@dimen/text_size_medium" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0"
+                                            android:gravity="left"
+                                            android:text="Mar 8 2018"
+                                            android:textColor="#FFAA00"
+                                            android:textSize="@dimen/text_size_extra_small" />
+                                    </LinearLayout>
+
+                                    <RatingBar
+                                        android:id="@+id/user_rate1"
+                                        style="@style/FoursquareReviewRating"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:numStars="5"
+                                        android:rating="5"
+                                        android:theme="@style/FoursquareReviewRating" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="I am so happy, my dear friend, so absorbed in the exquisite sense o..."
+                                        android:textSize="@dimen/text_size_small" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingBottom="10dp"
+                        app:cardBackgroundColor="#fff"
+                        app:cardCornerRadius="20dp"
+
+                        app:cardElevation="3dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_marginVertical="15dp"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:orientation="horizontal">
+
+                                <net.promasoft.trawellmate.dsgn.CircleImageView
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/userimg_3" />
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:gravity="left"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_weight="1"
+                                            android:gravity="start"
+                                            android:text="Sara Jackson"
+                                            android:textColor="@color/text_color_black"
+                                            android:textSize="@dimen/text_size_medium" />
+
+                                        <TextView
+                                            android:id="@+id/date_1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0"
+                                            android:gravity="left"
+                                            android:text="Mar 8 2018"
+                                            android:textColor="#FFAA00"
+                                            android:textSize="@dimen/text_size_extra_small" />
+                                    </LinearLayout>
+
+                                    <RatingBar
+                                        style="@style/FoursquareReviewRating"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:numStars="5"
+                                        android:rating="4"
+                                        android:theme="@style/FoursquareReviewRating" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="A wonderful serenity has taken possession of my entire soul..."
+                                        android:textSize="@dimen/text_size_small" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingBottom="10dp"
+                        app:cardBackgroundColor="#fff"
+                        app:cardCornerRadius="20dp"
+
+                        app:cardElevation="3dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_marginVertical="15dp"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:orientation="horizontal">
+
+                                <net.promasoft.trawellmate.dsgn.CircleImageView
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/userimg_2" />
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:gravity="left"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="5dp"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_weight="1"
+                                            android:gravity="start"
+                                            android:text="Jose Matthew"
+                                            android:textColor="@color/text_color_black"
+                                            android:textSize="@dimen/text_size_medium" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0"
+                                            android:gravity="left"
+                                            android:text="Mar 8 2018"
+                                            android:textColor="#FFAA00"
+                                            android:textSize="@dimen/text_size_extra_small" />
+                                    </LinearLayout>
+
+                                    <RatingBar
+                                        style="@style/FoursquareReviewRating"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:numStars="5"
+                                        android:rating="4"
+                                        android:theme="@style/FoursquareReviewRating" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="A wonderful serenity has taken possession of my entire soul..."
+                                        android:textSize="@dimen/text_size_small" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
 
             </LinearLayout>
 

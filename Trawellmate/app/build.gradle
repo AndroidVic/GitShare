@@ -33,4 +33,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.0.3'
+    implementation 'com.github.sangcomz:StickyTimeLine:v0.0.17'
+    implementation 'com.github.vipulasri:timelineview:1.1.0'
+
 }

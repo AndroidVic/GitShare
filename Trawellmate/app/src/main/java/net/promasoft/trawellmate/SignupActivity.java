@@ -43,8 +43,8 @@ public class SignupActivity extends AppCompatActivity{
             public void onClick(View view) {
                 final String checkNo = editText.getText().toString().trim();
                 if (isPhoneNumberValid(checkNo)) {
-                    verifyOtpDialog = new VerifyOtpDialog(SignupActivity.this);
-                    verifyOtpDialog.showPage();
+                    Intent intent= new Intent(getApplicationContext(),VerifyOtp.class);
+                    startActivity(intent);
                 } else {
                     AppAlerts.showMessage(layout, msg);
                 }

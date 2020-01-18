@@ -6,7 +6,7 @@
 
     <color name="text_color_white">#ffffff</color>
 
-<!--    <color name="card_diff_color">#FFFDFD</color>-->
+    <!--    <color name="card_diff_color">#FFFDFD</color>-->
     <color name="card_diff_color">#F0EEEE</color>
     <color name="text_color_black">#2E2E2E</color>
     <!--    E2E2E1-->
@@ -16,5 +16,11 @@
     <color name="colorgrey">#777C77</color>
     <color name="colordarkgrey">#404440</color>
     <color name="colorblack">#050505</color>
+    <color name="colorGold">#FFAA00</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorIcons">#5E5E5E</color>
+    <color name="colorIconsText">#5E5E5E</color>
+    <color name="color_text_deafult">#7A7A7A</color>
+    <color name="color_text_deafult_light">#A3A3A3</color>
 
 </resources>

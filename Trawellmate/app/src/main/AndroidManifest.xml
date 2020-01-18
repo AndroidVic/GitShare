@@ -9,12 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".DetailsAct"></activity>
+        <activity android:name=".DemoEditAct" />
         <activity android:name=".HomeAct" />
-
-        <activity android:name=".SignupActivity"></activity>
-
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".WriteReview" />
+        <activity android:name=".VerifyOtp" />
+        <activity android:name=".UserAccountAct" />
+        <activity android:name=".UserPassChngeAct" />
+        <activity android:name=".UserProfileAct" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginAct">
             <intent-filter>

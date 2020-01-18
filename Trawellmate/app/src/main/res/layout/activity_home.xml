@@ -1602,4 +1602,35 @@
     </FrameLayout>
 
 
+    <LinearLayout
+        android:id="@+id/ID_bottom_menu_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E6E5E5" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/ID_bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:background="@color/card_diff_color"
+            app:itemIconSize="22dp"
+            app:labelVisibilityMode="labeled"
+            app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:itemIconTint="@drawable/bottomnav_selector"
+            app:itemTextColor="@drawable/bottomnav_selector"
+            app:menu="@menu/bottom_menu" />
+
+    </LinearLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

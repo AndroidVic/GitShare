@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ID_nav_explore"
+        android:icon="@drawable/ic_search1"
+        android:title="Explore" />
+
+    <item
+        android:id="@+id/ID_nav_saved"
+        android:icon="@drawable/ic_saved"
+        android:title="Saved" />
+
+    <item
+        android:id="@+id/ID_nav_booking"
+        android:icon="@drawable/ic_booking1"
+        android:title="Booking" />
+
+    <item
+        android:id="@+id/ID_nav_account"
+        android:icon="@drawable/ic_account_circle"
+        android:title="Account" />
+
+</menu>

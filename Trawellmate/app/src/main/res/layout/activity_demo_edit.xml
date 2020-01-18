@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DemoEditAct">
+
+    <LinearLayout
+        android:layout_marginHorizontal="10dp"
+        android:paddingVertical="20dp"
+        android:background="@drawable/grey_card_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/text_color_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:fontFamily="@font/open_san_script"
+            android:text="Detailed Day Wise Itinerary"
+            android:textSize="@dimen/text_size_extra_large" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ID_daywise_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ID_daywise_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fafafa"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="0.2in"
+            android:src="@drawable/ic_day_wise" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="0.2in"
+            android:background="#C7C7C7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:text="No Data"
+            android:textSize="@dimen/text_size_large" />
+
+    </LinearLayout>
+
+</RelativeLayout>

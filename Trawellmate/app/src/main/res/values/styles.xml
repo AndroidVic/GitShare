@@ -8,8 +8,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
 
         <item name="colorControlNormal">#c5c5c5</item>
+
+        <item name="android:spinnerDropDownItemStyle">@style/mySpinnerItemStyle</item>
+
     </style>
 
     <style name="otpAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -17,12 +21,31 @@
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
     </style>
 
-
     <style name="FoursquareReviewRating" parent="Widget.AppCompat.RatingBar.Small">
-        <item name="colorControlNormal">#EEECEC</item>
-        <item name="colorControlActivated">#F0C909</item>
+        <item name="colorControlNormal">#B1B0B0</item>
+        <item name="colorControlActivated">@color/colorGold</item>
         <item name="android:minHeight">20dp</item>
         <item name="android:maxHeight">20dp</item>
+    </style>
+
+    <style name="AppTheme.WhiteAccent">
+        <item name="colorAccent">@color/colorGold</item> <!-- Whatever color you want-->
+    </style>
+
+    <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10dp</item>
+    </style>
+
+    <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">11dp</item>
+    </style>
+
+    <style name="mySpinnerItemStyle" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:textColor">@color/color_text_deafult</item>
+        <!--        <item name="android:backgroundTint">@color/red</item>-->
+        <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
 
 </resources>
