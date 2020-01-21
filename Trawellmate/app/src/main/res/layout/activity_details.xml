@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
     android:layout_height="match_parent"
     android:background="#ffffff">
 
@@ -63,7 +64,7 @@
                     android:layout_gravity="center"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="20dp"
-                    android:padding="5dp"
+                    android:padding="8dp"
                     android:src="@drawable/ic_share"
                     android:tint="#ffffff" />
 
@@ -110,7 +111,7 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="20dp"
-                        android:padding="4dp"
+                        android:padding="6dp"
                         android:src="@drawable/ic_saved"
                         android:tint="#ffffff" />
 
@@ -1307,6 +1308,10 @@
                 </LinearLayout>
 
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"/>
+
             </LinearLayout>
 
 
@@ -1314,5 +1319,16 @@
 
     </FrameLayout>
 
+    <Button
+        android:elevation="10dp"
+        android:id="@+id/ID_hm_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="10dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_gradient_style"
+        android:text="Book a trip"
+        android:textColor="@color/text_color_white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,10 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -31,6 +35,11 @@ public class LoginAct extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
         getWindow().getDecorView().setSystemUiVisibility(flag);
+//        Window window = getWindow();
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            window.setStatusBarColor(Color.TRANSPARENT);
+//        }
         setContentView(R.layout.activity_login);
 
 
@@ -66,6 +75,14 @@ public class LoginAct extends AppCompatActivity {
         continueBt.setVisibility(View.INVISIBLE);
         startAnim(continueBt, 1400, R.anim.item_animation_fall_down);
 
+        Button browseBt = findViewById(R.id.ID_browse_bt);
+        browseBt.setVisibility(View.INVISIBLE);
+        startAnim(browseBt, 1450, R.anim.item_animation_fall_down);
+
+        browseBt.setOnClickListener(view -> {
+            startActivity(new Intent(LoginAct.this, HomeAct.class));
+        });
+
         continueBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,6 +116,12 @@ public class LoginAct extends AppCompatActivity {
         signUpText.setOnClickListener(view -> {
             startActivity(new Intent(LoginAct.this, SignupActivity.class));
         });
+
+        CustomTextLink frgtPassEmailSubmit = findViewById(R.id.ID_login_forget_pass);
+        frgtPassEmailSubmit.setOnClickListener(view -> {
+            startActivity(new Intent(LoginAct.this, ForgotPAsswordAct.class));
+        });
+
 
     }
 

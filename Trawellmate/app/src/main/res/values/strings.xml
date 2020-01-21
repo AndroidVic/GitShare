@@ -22,4 +22,16 @@
         <item>Married</item>
     </string-array>
 
+    <string name="privacy_policy">We are in the business of personalized vacations, so privacy is of utmost importance to us. We are not here for your data. We assure you that we will also not spam you with unsolicited emails, messages or calls.\nThe Privacy Policy sets forth our policies regarding the collection, use and protection of the personal information of those using the TraWellMate.com website. Personal information means information that can be linked to a specific individual, such as name, address, telephone number, e-mail address, and credit card number. We encourage you to review our Privacy Policy, and become familiar with it, but you should know that we do not sell or rent our customers personal information to third parties. Please note that we review our Privacy Policy from time to time, and we may make periodic changes to the policy in connection with that review. Therefore, you may wish to bookmark this page and/or periodically review this page to make sure you have the latest version. Regardless of later updates, we will abide by the privacy practices described to you in this Privacy Policy at the time you provided us with your personal information.</string>
+    <string-array name="state_list">
+        <item>Kerala</item>
+        <item>Karnataka</item>
+        <item>Maharashtra</item>
+        <item>Goa</item>
+    </string-array>
+
+    <string name="number_picker_formatter">%01d</string>
+    <string name="roboto_light">sans-serif-light</string>
+    <string name="strike_text"><strike>₹ 85,000</strike></string>
+
 </resources>

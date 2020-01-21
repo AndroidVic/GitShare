@@ -5,12 +5,15 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import net.promasoft.trawellmate.util.AlineActivityHelper;
+
 public class UserProfileAct extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+        new AlineActivityHelper(UserProfileAct.this, false);
 
         Button profileSave = findViewById(R.id.ID_prf_save);
         profileSave.setOnClickListener(view -> {

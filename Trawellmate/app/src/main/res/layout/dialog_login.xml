@@ -1,39 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/ID_hm_login_page"
     android:layout_height="match_parent"
-    tools:context=".LoginAct">
+    android:background="#00FFFFFF">
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/login_bg" />
-
-    <!--    sign in text-->
-    <TextView
-        android:id="@+id/Ida_signintext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/Ida_login_card"
-        android:layout_marginLeft="50dp"
-        android:layout_marginBottom="20dp"
-        android:text="Sign In"
-        android:textColor="@color/text_color_white"
-        android:textSize="22dp"
-        android:visibility="gone" />
-
-    <!--    Login-->
     <androidx.cardview.widget.CardView
         android:id="@+id/Ida_login_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-50dp"
-        android:visibility="gone"
+        android:elevation="10dp"
+        android:visibility="visible"
         app:cardCornerRadius="50dp">
 
 
@@ -275,71 +256,22 @@
 
     </androidx.cardview.widget.CardView>
 
-    <!--    continue-->
-    <LinearLayout
-        android:id="@+id/Ida_info_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="70dp"
-        android:orientation="vertical"
-        android:visibility="visible">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ID_hm_login_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/Ida_login_card"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="-20dp"
+        android:elevation="15dp"
+        app:cardCornerRadius="15dp">
 
-        <TextView
-            android:id="@+id/Ida_text1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Plan your travel now"
-            android:textColor="@color/text_color_white"
-            android:textSize="25dp"
-            android:textStyle="bold" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_close" />
 
-        <TextView
-            android:id="@+id/Ida_text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:paddingHorizontal="20dp"
-            android:text="Experience the various exciting tour and travel packages, find vacation packages."
-            android:textColor="@color/text_color_white"
-            android:textSize="@dimen/text_size_large" />
-
-
-        <Button
-            android:id="@+id/ID_continue_bt"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="0"
-            android:background="@drawable/grad_login_bt"
-            android:ems="15"
-            android:text="Login"
-            android:textColor="@color/text_color_white" />
-
-
-        <Button
-            android:id="@+id/ID_browse_bt"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="0"
-            android:background="@drawable/grad_login_bt"
-            android:ems="15"
-            android:text="Browse packages"
-            android:textColor="@color/text_color_white" />
-
-
-    </LinearLayout>
-
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

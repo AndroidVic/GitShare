@@ -2,24 +2,37 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.promasoft.trawellmate">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".DetailsAct"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ContactUsAct"></activity>
+        <activity android:name=".DetailsAct" />
         <activity android:name=".DemoEditAct" />
         <activity android:name=".HomeAct" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".WriteReview" />
+        <activity android:name=".PrivacyAct" />
+        <activity android:name=".BookingAct" />
+        <activity android:name=".YourBookings"
+            android:theme="@style/AppTheme.TransparentTheme"/>
         <activity android:name=".VerifyOtp" />
         <activity android:name=".UserAccountAct" />
+        <activity android:name=".FaqAct" />
+        <activity android:name=".ForgotPAsswordAct" />
+        <activity android:name=".NotificationAct" />
         <activity android:name=".UserPassChngeAct" />
         <activity android:name=".UserProfileAct" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".LoginAct">
+        <activity
+            android:name=".LoginAct"
+            android:theme="@style/AppTheme.Translucent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

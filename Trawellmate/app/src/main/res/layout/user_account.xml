@@ -6,11 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".LoginAct">
 
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:src="#030303" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/user_account_bg" />
+        android:src="@drawable/bg_pattern" />
 
     <ImageView
         android:id="@+id/back_btn"

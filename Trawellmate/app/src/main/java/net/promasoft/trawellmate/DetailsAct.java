@@ -10,18 +10,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 
 import net.promasoft.trawellmate.adp.AdpDaWiseDetails;
 import net.promasoft.trawellmate.arg.DataDayWise;
 import net.promasoft.trawellmate.dsgn.CustomTextLink;
+import net.promasoft.trawellmate.util.AlineActivityHelper;
 import net.promasoft.trawellmate.util.DelayHelper;
 import net.promasoft.trawellmate.util.DiamensionManager;
 import net.promasoft.trawellmate.util.ViewECAnimator;
@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 public class DetailsAct extends AppCompatActivity {
 
-    private ImageView searchLay;
+    private ImageView statusBarBg;
     private boolean searchBgVisible = false;
     private NestedScrollView nestedContainer;
     private ImageView preExpandCont;
@@ -39,10 +39,11 @@ public class DetailsAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        new AlineActivityHelper(DetailsAct.this, true);
+        statusBarBg = findViewById(R.id.ID_sts_bg_lay);
 
 
         nestedContainer = findViewById(R.id.ID_nested_container);
-        searchLay = findViewById(R.id.ID_sts_bg_lay);
 
         AppBarLayout appBarLayout = findViewById(R.id.id_appBar_main);
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -51,29 +52,29 @@ public class DetailsAct extends AppCompatActivity {
 
                 if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
                     //  Collapsed
-                    if (searchLay.getVisibility() == View.INVISIBLE) {
+                    if (statusBarBg.getVisibility() == View.INVISIBLE) {
                         searchBgVisible = true;
 //                        bottom_menu_lay.setVisibility(View.VISIBLE);
 //                        bottom_menu_lay.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up));
-                        searchLay.setVisibility(View.VISIBLE);
-                        searchLay.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in_anim));
+                        statusBarBg.setVisibility(View.VISIBLE);
+                        statusBarBg.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in_anim));
                     }
 
                 } else if (verticalOffset == 0) {
                     // Expanded
-                    if (searchLay.getVisibility() == View.VISIBLE) {
+                    if (statusBarBg.getVisibility() == View.VISIBLE) {
                         searchBgVisible = false;
-                        searchLay.setVisibility(View.INVISIBLE);
-                        searchLay.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_anim));
+                        statusBarBg.setVisibility(View.INVISIBLE);
+                        statusBarBg.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_anim));
                     }
                 } else if (searchBgVisible) {
                     //  Collapsed
-                    if (searchLay.getVisibility() == View.VISIBLE) {
+                    if (statusBarBg.getVisibility() == View.VISIBLE) {
                         searchBgVisible = false;
 //                        bottom_menu_lay.setVisibility(View.GONE);
 //                        bottom_menu_lay.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down));
-                        searchLay.setVisibility(View.INVISIBLE);
-                        searchLay.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_anim));
+                        statusBarBg.setVisibility(View.INVISIBLE);
+                        statusBarBg.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_anim));
                     }
 
                 }
@@ -88,6 +89,12 @@ public class DetailsAct extends AppCompatActivity {
         CustomTextLink writeReview = findViewById(R.id.ID_write_review);
         writeReview.setOnClickListener(view -> {
             startActivity(new Intent(DetailsAct.this, WriteReview.class));
+        });
+
+        Button bookATrip = findViewById(R.id.ID_hm_login);
+        bookATrip.setOnClickListener(view -> {
+            startActivity(new Intent(DetailsAct.this, BookingAct.class));
+
         });
     }
 

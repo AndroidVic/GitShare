@@ -26,6 +26,8 @@ public class UserAccountAct extends AppCompatActivity {
 
                         break;
                     case R.id.ID_acc_booking:
+                        startActivity(new Intent(UserAccountAct.this, YourBookings.class));
+
 
                         break;
                     case R.id.ID_acc_user:
@@ -42,16 +44,19 @@ public class UserAccountAct extends AppCompatActivity {
 
                         break;
                     case R.id.ID_acc_notification:
+                        startActivity(new Intent(UserAccountAct.this, NotificationAct.class));
 
                         break;
                     case R.id.ID_acc_prrivacy_policy:
+                        startActivity(new Intent(UserAccountAct.this, PrivacyAct.class));
 
                         break;
                     case R.id.ID_acc_contact_us:
+                        startActivity(new Intent(UserAccountAct.this, ContactUsAct.class));
 
                         break;
                     case R.id.ID_acc_faq:
-
+                        startActivity(new Intent(UserAccountAct.this, FaqAct.class));
                         break;
                     case R.id.ID_acc_about_us:
 
