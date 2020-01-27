@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".LoginAct">
 
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -308,7 +307,6 @@
             android:textColor="@color/text_color_white"
             android:textSize="@dimen/text_size_large" />
 
-
         <Button
             android:id="@+id/ID_continue_bt"
             android:layout_width="wrap_content"
@@ -323,7 +321,6 @@
             android:text="Login"
             android:textColor="@color/text_color_white" />
 
-
         <Button
             android:id="@+id/ID_browse_bt"
             android:layout_width="wrap_content"
@@ -337,7 +334,6 @@
             android:ems="15"
             android:text="Browse packages"
             android:textColor="@color/text_color_white" />
-
 
     </LinearLayout>
 

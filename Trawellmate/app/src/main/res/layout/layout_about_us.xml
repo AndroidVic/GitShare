@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="30dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-black"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="Hi! Welcome to TraWellMate"
+        android:textSize="@dimen/text_size_medium" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textStyle="italic"
+        android:text="Traveling – it leaves you speechless,then turns you into a storyteller."/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="6dp"
+        android:gravity="left"
+        android:text="As professional travel agents, travel is our passion and our life work. It’s what we do all day every day. We have personally been to different destinations, stayed at the resorts and taken the off-the-beaten path tours, so we know what to recommend and what not to recommend to our clients. We have established relationships in the travel industry that enable us to offer you specialoffers and amenities you won’t find anywhere else—even online. We will bethere for you if anything unexpected occurs on your trip. We have the education and the experience to ensure you enjoy exceptional travel experiences throughout your lifetime."/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textStyle="italic|bold"
+        android:text="When you travel with us, you travel better."/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Call to us: +91-914772967111"
+        android:textColor="@color/text_color_white"
+        android:layout_margin="30dp"
+        android:background="@drawable/btn_gradient_style"/>
+
+</LinearLayout>
+</LinearLayout>

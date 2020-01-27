@@ -6,33 +6,35 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/app_logo1"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/app_logo1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ContactUsAct"></activity>
+        <activity android:name=".GoThroughAct"></activity>
+        <activity android:name=".HomeAct" />
+        <activity android:name=".ContactUsAct" />
         <activity android:name=".DetailsAct" />
         <activity android:name=".DemoEditAct" />
-        <activity android:name=".HomeAct" />
+        <activity android:name=".LoginAct" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".WriteReview" />
         <activity android:name=".PrivacyAct" />
-        <activity android:name=".BookingAct" />
-        <activity android:name=".YourBookings"
-            android:theme="@style/AppTheme.TransparentTheme"/>
+        <activity android:name=".SplashScreenAct" />
+        <activity android:name=".YourBookings" />
         <activity android:name=".VerifyOtp" />
         <activity android:name=".UserAccountAct" />
         <activity android:name=".FaqAct" />
         <activity android:name=".ForgotPAsswordAct" />
-        <activity android:name=".NotificationAct" />
-        <activity android:name=".UserPassChngeAct" />
-        <activity android:name=".UserProfileAct" />
-        <activity android:name=".MainActivity" />
         <activity
-            android:name=".LoginAct"
-            android:theme="@style/AppTheme.Translucent">
+            android:name=".NotificationAct"
+            android:theme="@style/AppTheme.TransparentWhite" />
+        <activity android:name=".UserPassChngeAct" />
+        <activity android:name=".AboutUsAct" />
+        <activity android:name=".UserProfileAct" />
+        <activity android:name=".MainActivity" /> <!-- android:theme="@style/AppTheme.Translucent" -->
+        <activity android:name=".BookingAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

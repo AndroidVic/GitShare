@@ -12,7 +12,7 @@ public class NotificationAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_notification);
-        new AlineActivityHelper(NotificationAct.this, true);
+        new AlineActivityHelper(NotificationAct.this, false);
 
     }
 }

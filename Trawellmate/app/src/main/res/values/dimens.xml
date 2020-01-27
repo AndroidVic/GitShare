@@ -28,4 +28,6 @@
 
     <dimen name="menu_card_size">130dp</dimen>
 
+    <dimen name="bottom_nav_height">51dp</dimen>
+
 </resources>

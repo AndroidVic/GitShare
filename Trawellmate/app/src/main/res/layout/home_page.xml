@@ -2,10 +2,10 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
-    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E7E7E6">
+    android:background="#E7E7E6"
+    android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/id_appBar_main"
@@ -118,6 +118,7 @@
                             android:src="@drawable/ic_search_01_01" />
 
                         <EditText
+                            android:inputType="textPersonName"
                             android:id="@+id/ID_search_et"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -279,7 +280,8 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/bottom_nav_height">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1611,49 +1613,16 @@
     </FrameLayout>
 
 
-    <LinearLayout
-        android:id="@+id/ID_bottom_menu_lay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E6E5E5" />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/ID_bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="bottom"
-            android:background="@color/card_diff_color"
-            app:itemIconSize="22dp"
-            app:itemIconTint="@drawable/bottomnav_selector"
-            app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
-            app:itemTextColor="@drawable/bottomnav_selector"
-            app:labelVisibilityMode="labeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:menu="@menu/bottom_menu" />
-
-    </LinearLayout>
-
-
     <Button
         android:id="@+id/ID_hm_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_margin="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/btn_gradient_style"
         android:text="Login"
         android:textColor="@color/text_color_white" />
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

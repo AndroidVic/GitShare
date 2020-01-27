@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Build;
@@ -27,17 +28,21 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import net.promasoft.trawellmate.dsgn.CustomTextLink;
+import net.promasoft.trawellmate.frg.FrgBooking;
+import net.promasoft.trawellmate.frg.FrgHome;
+import net.promasoft.trawellmate.frg.FrgSaved;
+import net.promasoft.trawellmate.frg.FrgUserProfile;
 import net.promasoft.trawellmate.util.AlineActivityHelper;
+import net.promasoft.trawellmate.util.AnimHelper;
 import net.promasoft.trawellmate.util.DialogLogin;
 
 public class HomeAct extends AppCompatActivity {
 
-    private ImageView searchLay;
-    public boolean searchBgVisible = false;
-    private LinearLayout bottom_menu_lay;
     private BottomNavigationView bottomNavigationMenu;
+
     private DrawerLayout mainDrawerLay;
     private NavigationView mNavigationView;
+    private LinearLayout bottom_menu_lay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,98 +51,54 @@ public class HomeAct extends AppCompatActivity {
         new AlineActivityHelper(HomeAct.this, false);
 
         initDrawer();
+        bottom_menu_lay = findViewById(R.id.ID_bottom_menu_lay);
+        FrgHome frgHome = FrgHome.newInstance(HomeAct.this);
+        getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgHome).commit();
+        FrgBooking frgBooking = FrgBooking.newInstance(HomeAct.this);
+        FrgSaved frgSaved = FrgSaved.newInstance(HomeAct.this);
+        FrgUserProfile frgUserProfile = FrgUserProfile.newInstance(HomeAct.this);
 
+        frgHome.setDrawerListner(new FrgHome.DrawerCloseListner() {
+            @Override
+            public void onCoordClose() {
+                bottom_menu_lay.setVisibility(View.VISIBLE);
+//                bottom_menu_lay.startAnimation(AnimationUtils.loadAnimation(HomeAct.this, R.anim.slide_up));
+                AnimHelper.slideUp(bottom_menu_lay);
 
-        Button loginBt = findViewById(R.id.ID_hm_login);
-        loginBt.setOnClickListener(view -> {
-            loginBt.setVisibility(View.GONE);
-            new DialogLogin(HomeAct.this).showPage();
+            }
+
+            @Override
+            public void onCoordOpened() {
+//                bottom_menu_lay.setVisibility(View.GONE);
+//                bottom_menu_lay.startAnimation(AnimationUtils.loadAnimation(HomeAct.this, R.anim.slide_down));
+                AnimHelper.slideDown(bottom_menu_lay);
+
+            }
+
+            @Override
+            public void onDrawerClicked() {
+
+                if (!mainDrawerLay.isDrawerOpen(GravityCompat.START)) {
+                    mainDrawerLay.openDrawer(GravityCompat.START);
+                }
+            }
         });
 
         bottomNavigationMenu = findViewById(R.id.ID_bottom_navigation);
-        bottom_menu_lay = findViewById(R.id.ID_bottom_menu_lay);
-        searchLay = findViewById(R.id.ID_search_bg_lay);
-
-        AppBarLayout appBarLayout = findViewById(R.id.id_appBar_main);
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-
-                if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
-                    //  Collapsed
-                    if (searchLay.getVisibility() == View.GONE) {
-                        searchBgVisible = true;
-                        bottom_menu_lay.setVisibility(View.VISIBLE);
-                        bottom_menu_lay.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up));
-                        searchLay.setVisibility(View.VISIBLE);
-                        searchLay.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in_anim));
-                    }
-
-                } else if (verticalOffset == 0) {
-                    // Expanded
-                    if (searchLay.getVisibility() == View.VISIBLE) {
-                        searchBgVisible = false;
-                        searchLay.setVisibility(View.GONE);
-                        searchLay.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_anim));
-                    }
-                } else if (searchBgVisible) {
-                    //  Collapsed
-                    if (searchLay.getVisibility() == View.VISIBLE) {
-                        searchBgVisible = false;
-                        bottom_menu_lay.setVisibility(View.GONE);
-                        bottom_menu_lay.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down));
-                        searchLay.setVisibility(View.GONE);
-                        searchLay.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_anim));
-                    }
-
-                }
-
-            }
-        });
-
-
-        ImageView notification = findViewById(R.id.ID_hm_notification);
-        notification.setOnClickListener(view -> {
-            startActivity(new Intent(HomeAct.this, NotificationAct.class));
-        });
-
-        TextView viewPackages = findViewById(R.id.ID_view_packages);
-        viewPackages.setOnClickListener(view -> {
-            startActivity(new Intent(HomeAct.this, DetailsAct.class));
-        });
-
-        CardView viewPackages1 = findViewById(R.id.ID_hm_pack1);
-        viewPackages1.setOnClickListener(view -> {
-            startActivity(new Intent(HomeAct.this, DetailsAct.class));
-        });
-        CardView viewPackages2 = findViewById(R.id.ID_hm_pack2);
-        viewPackages2.setOnClickListener(view -> {
-            startActivity(new Intent(HomeAct.this, DetailsAct.class));
-        });
-        CardView viewPackages3 = findViewById(R.id.ID_hm_pack3);
-        viewPackages3.setOnClickListener(view -> {
-            startActivity(new Intent(HomeAct.this, DetailsAct.class));
-        });
-        CardView viewPackages4 = findViewById(R.id.ID_hm_pack4);
-        viewPackages4.setOnClickListener(view -> {
-            startActivity(new Intent(HomeAct.this, DetailsAct.class));
-        });
-        CardView viewPackages5 = findViewById(R.id.ID_hm_pack5);
-        viewPackages5.setOnClickListener(view -> {
-            startActivity(new Intent(HomeAct.this, DetailsAct.class));
-        });
-        CardView viewPackages6 = findViewById(R.id.ID_hm_pack6);
-        viewPackages6.setOnClickListener(view -> {
-            startActivity(new Intent(HomeAct.this, DetailsAct.class));
-        });
-
         bottomNavigationMenu.setOnNavigationItemSelectedListener(menuItem -> {
             int id = menuItem.getItemId();
             if (id == R.id.ID_nav_account) {
-                startActivity(new Intent(HomeAct.this, UserAccountAct.class));
+                getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgUserProfile).commit();
             }
             if (id == R.id.ID_nav_booking) {
-                startActivity(new Intent(HomeAct.this, YourBookings.class));
+                getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgBooking).commit();
+            }
+            if (id == R.id.ID_nav_explore) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgHome).commit();
+            }
+            if (id == R.id.ID_nav_saved) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgSaved).commit();
+
             }
             return true;
         });
@@ -148,17 +109,7 @@ public class HomeAct extends AppCompatActivity {
 
     private void initDrawer() {
         mainDrawerLay = findViewById(R.id.drawer_layout);
-        ImageView menuSlider = findViewById(R.id.ID_menu_iv);
-        menuSlider.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                if (!mainDrawerLay.isDrawerOpen(GravityCompat.START)) {
-                    mainDrawerLay.openDrawer(GravityCompat.START);
-                }
-
-            }
-        });
 
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
 
@@ -185,6 +136,9 @@ public class HomeAct extends AppCompatActivity {
                     case R.id.ID_nav_change_pass:
                         startActivity(new Intent(HomeAct.this, UserPassChngeAct.class));
                         break;
+                    case R.id.ID_nav_transaction:
+
+                        break;
                     case R.id.ID_nav_claim_refund:
 
                         break;
@@ -204,6 +158,7 @@ public class HomeAct extends AppCompatActivity {
 
                         break;
                     case R.id.ID_nav_aboutus:
+                        startActivity(new Intent(HomeAct.this, AboutUsAct.class));
 
                         break;
                     case R.id.ID_nav_logout:

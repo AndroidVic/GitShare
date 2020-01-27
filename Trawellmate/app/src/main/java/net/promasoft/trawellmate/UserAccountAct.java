@@ -13,7 +13,7 @@ public class UserAccountAct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_account);
+        setContentView(R.layout.activity_user_account);
 
         LinearLayout iconBaseCont = findViewById(R.id.ID_acc_icon_cont);
 
@@ -67,13 +67,7 @@ public class UserAccountAct extends AppCompatActivity {
 
         for (int i = 0; i < iconBaseCont.getChildCount(); i++) {
             LinearLayout child = (LinearLayout) iconBaseCont.getChildAt(i);
-            for (int j = 0; j < child.getChildCount(); j++) {
-                try {
-                    LinearLayout childIcon = (LinearLayout) child.getChildAt(j);
-                    childIcon.setOnClickListener(onIconsClickListener);
-                } catch (Exception e) {
-                }
-            }
+            child.setOnClickListener(onIconsClickListener);
 
         }
     }

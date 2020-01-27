@@ -30,6 +30,12 @@
         <item>Goa</item>
     </string-array>
 
+    <string-array name="salutation">
+        <item>Mr.</item>
+        <item>Ms.</item>
+        <item>Mrs.</item>
+    </string-array>
+
     <string name="number_picker_formatter">%01d</string>
     <string name="roboto_light">sans-serif-light</string>
     <string name="strike_text"><strike>₹ 85,000</strike></string>

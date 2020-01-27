@@ -3,21 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="#EEECEC"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        app:elevation="5dp"
+        app:expanded="true">
+
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:elevation="10dp"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/ID_sts_bg_lay"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:background="@drawable/grad_theme"
-            android:elevation="10dp" />
+            android:background="#EEECEC" />
+        <!--            android:background="@drawable/grad_theme"-->
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -46,6 +67,7 @@
                     android:layout_marginLeft="10dp"
                     android:padding="10dp"
                     android:text="Notifications"
+                    android:textColor="@color/text_color_black"
 
                     android:textSize="@dimen/text_size_large" />
 
@@ -53,444 +75,842 @@
 
         </RelativeLayout>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/user_review_card1"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:padding="20dp"
-            android:paddingLeft="5dp"
-            android:paddingBottom="10dp"
-            app:cardBackgroundColor="#fff"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="2dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="15dp"
                 android:orientation="vertical">
 
-                <LinearLayout
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:orientation="horizontal">
-
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        app:cardBackgroundColor="#2196F3"
-                        app:cardCornerRadius="30dp">
-
-                        <ImageView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:padding="15dp"
-                            android:src="@drawable/ic_notification"
-                            android:tint="#fff" />
-                    </androidx.cardview.widget.CardView>
-
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:padding="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="10dp"
+                    app:cardBackgroundColor="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="15dp"
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:gravity="left"
-                            android:orientation="horizontal"
-                            android:padding="5dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:drawableRight="@drawable/ic_location"
-                                android:gravity="center"
-                                android:text="Costa Rica" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:text="Rs.85,000" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginBottom="5dp"
-                            android:text="Grand European Tour" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:layout_marginLeft="15dp"
-                                android:text="Mar 12- Mar 20" />
 
-                            <TextView
+                            <!--                    <androidx.cardview.widget.CardView-->
+                            <!--                        android:layout_width="60dp"-->
+                            <!--                        android:layout_height="60dp"-->
+                            <!--                        android:layout_gravity="center"-->
+                            <!--                        app:cardBackgroundColor="#2196F3"-->
+                            <!--                        app:cardCornerRadius="30dp">-->
+
+                            <!--                        <ImageView-->
+
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="match_parent"-->
+                            <!--                            android:padding="15dp"-->
+                            <!--                            android:src="@drawable/ic_notification"-->
+                            <!--                            android:tint="#fff" />-->
+                            <!--                    </androidx.cardview.widget.CardView>-->
+
+                            <net.promasoft.trawellmate.dsgn.CircleImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/demo_pack1_1" />
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:text="5 mins ago"
+                                android:orientation="vertical">
 
-                                />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:gravity="left"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:drawableLeft="@drawable/ic_location"
+                                        android:gravity="center"
+                                        android:text="Costa Rica"
+                                        android:textColor="@color/text_color_black" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="Rs.85,000"
+
+                                        android:textColor="@color/text_color_black" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Grand European Tour" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:layout_marginLeft="15dp"
+                                        android:text="Mar 12- Mar 20"
+                                        android:textSize="@dimen/text_size_small" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="5 mins ago"
+                                        android:textSize="@dimen/text_size_small"
+
+                                        />
+                                </LinearLayout>
+                            </LinearLayout>
+
                         </LinearLayout>
+
                     </LinearLayout>
 
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:padding="20dp"
-            android:paddingLeft="5dp"
-            android:paddingBottom="10dp"
-            app:cardBackgroundColor="#fff"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="15dp"
-                android:orientation="vertical">
-
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:orientation="horizontal">
-
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        app:cardBackgroundColor="#2196F3"
-                        app:cardCornerRadius="30dp">
-
-                        <ImageView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:padding="15dp"
-                            android:src="@drawable/ic_notification"
-                            android:tint="#fff" />
-                    </androidx.cardview.widget.CardView>
-
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:padding="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="10dp"
+                    app:cardBackgroundColor="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="15dp"
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:gravity="left"
-                            android:orientation="horizontal"
-                            android:padding="5dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:drawableRight="@drawable/ic_location"
-                                android:gravity="center"
-                                android:text="Costa Rica" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:text="Rs.85,000" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginBottom="5dp"
-                            android:text="Grand European Tour" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:layout_marginLeft="15dp"
-                                android:text="Mar 12- Mar 20" />
 
-                            <TextView
+                            <!--                    <androidx.cardview.widget.CardView-->
+                            <!--                        android:layout_width="60dp"-->
+                            <!--                        android:layout_height="60dp"-->
+                            <!--                        android:layout_gravity="center"-->
+                            <!--                        app:cardBackgroundColor="#2196F3"-->
+                            <!--                        app:cardCornerRadius="30dp">-->
+
+                            <!--                        <ImageView-->
+
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="match_parent"-->
+                            <!--                            android:padding="15dp"-->
+                            <!--                            android:src="@drawable/ic_notification"-->
+                            <!--                            android:tint="#fff" />-->
+                            <!--                    </androidx.cardview.widget.CardView>-->
+
+                            <net.promasoft.trawellmate.dsgn.CircleImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/demo_pack1_2" />
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:text="5 mins ago"
+                                android:orientation="vertical">
 
-                                />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:gravity="left"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:drawableLeft="@drawable/ic_location"
+                                        android:gravity="center"
+                                        android:text="Costa Rica"
+                                        android:textColor="@color/text_color_black" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="Rs.85,000"
+
+                                        android:textColor="@color/text_color_black" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Grand European Tour" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:layout_marginLeft="15dp"
+                                        android:text="Mar 12- Mar 20"
+                                        android:textSize="@dimen/text_size_small" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="5 mins ago"
+                                        android:textSize="@dimen/text_size_small"
+
+                                        />
+                                </LinearLayout>
+                            </LinearLayout>
+
                         </LinearLayout>
+
                     </LinearLayout>
 
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:padding="20dp"
-            android:paddingLeft="5dp"
-            android:paddingBottom="10dp"
-            app:cardBackgroundColor="#fff"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="15dp"
-                android:orientation="vertical">
-
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:orientation="horizontal">
-
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        app:cardBackgroundColor="#2196F3"
-                        app:cardCornerRadius="30dp">
-
-                        <ImageView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:padding="15dp"
-                            android:src="@drawable/ic_notification"
-                            android:tint="#fff" />
-                    </androidx.cardview.widget.CardView>
-
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:padding="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="10dp"
+                    app:cardBackgroundColor="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="15dp"
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:gravity="left"
-                            android:orientation="horizontal"
-                            android:padding="5dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:drawableRight="@drawable/ic_location"
-                                android:gravity="center"
-                                android:text="Costa Rica" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:text="Rs.85,000" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginBottom="5dp"
-                            android:text="Grand European Tour" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:layout_marginLeft="15dp"
-                                android:text="Mar 12- Mar 20" />
 
-                            <TextView
+                            <!--                    <androidx.cardview.widget.CardView-->
+                            <!--                        android:layout_width="60dp"-->
+                            <!--                        android:layout_height="60dp"-->
+                            <!--                        android:layout_gravity="center"-->
+                            <!--                        app:cardBackgroundColor="#2196F3"-->
+                            <!--                        app:cardCornerRadius="30dp">-->
+
+                            <!--                        <ImageView-->
+
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="match_parent"-->
+                            <!--                            android:padding="15dp"-->
+                            <!--                            android:src="@drawable/ic_notification"-->
+                            <!--                            android:tint="#fff" />-->
+                            <!--                    </androidx.cardview.widget.CardView>-->
+
+                            <net.promasoft.trawellmate.dsgn.CircleImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/demo_pack5" />
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:text="5 mins ago"
+                                android:orientation="vertical">
 
-                                />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:gravity="left"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:drawableLeft="@drawable/ic_location"
+                                        android:gravity="center"
+                                        android:text="Costa Rica"
+                                        android:textColor="@color/text_color_black" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="Rs.85,000"
+
+                                        android:textColor="@color/text_color_black" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Grand European Tour" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:layout_marginLeft="15dp"
+                                        android:text="Mar 12- Mar 20"
+                                        android:textSize="@dimen/text_size_small" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="5 mins ago"
+                                        android:textSize="@dimen/text_size_small"
+
+                                        />
+                                </LinearLayout>
+                            </LinearLayout>
+
                         </LinearLayout>
+
                     </LinearLayout>
 
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:padding="20dp"
-            android:paddingLeft="5dp"
-            android:paddingBottom="10dp"
-            app:cardBackgroundColor="#fff"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="15dp"
-                android:orientation="vertical">
-
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:orientation="horizontal">
-
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        app:cardBackgroundColor="#2196F3"
-                        app:cardCornerRadius="30dp">
-
-                        <ImageView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:padding="15dp"
-                            android:src="@drawable/ic_notification"
-                            android:tint="#fff" />
-                    </androidx.cardview.widget.CardView>
-
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:padding="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="10dp"
+                    app:cardBackgroundColor="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="15dp"
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:gravity="left"
-                            android:orientation="horizontal"
-                            android:padding="5dp">
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:drawableRight="@drawable/ic_location"
-                                android:gravity="center"
-                                android:text="Costa Rica" />
 
-                            <TextView
+                            <!--                    <androidx.cardview.widget.CardView-->
+                            <!--                        android:layout_width="60dp"-->
+                            <!--                        android:layout_height="60dp"-->
+                            <!--                        android:layout_gravity="center"-->
+                            <!--                        app:cardBackgroundColor="#2196F3"-->
+                            <!--                        app:cardCornerRadius="30dp">-->
+
+                            <!--                        <ImageView-->
+
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="match_parent"-->
+                            <!--                            android:padding="15dp"-->
+                            <!--                            android:src="@drawable/ic_notification"-->
+                            <!--                            android:tint="#fff" />-->
+                            <!--                    </androidx.cardview.widget.CardView>-->
+
+                            <net.promasoft.trawellmate.dsgn.CircleImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/demo_pack7" />
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:text="Rs.85,000" />
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:gravity="left"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:drawableLeft="@drawable/ic_location"
+                                        android:gravity="center"
+                                        android:text="Costa Rica"
+                                        android:textColor="@color/text_color_black" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="Rs.85,000"
+
+                                        android:textColor="@color/text_color_black" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Grand European Tour" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:layout_marginLeft="15dp"
+                                        android:text="Mar 12- Mar 20"
+                                        android:textSize="@dimen/text_size_small" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="5 mins ago"
+                                        android:textSize="@dimen/text_size_small"
+
+                                        />
+                                </LinearLayout>
+                            </LinearLayout>
+
                         </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginBottom="5dp"
-                            android:text="Grand European Tour" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:padding="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="10dp"
+                    app:cardBackgroundColor="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="15dp"
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:layout_marginLeft="15dp"
-                                android:text="Mar 12- Mar 20" />
 
-                            <TextView
+                            <!--                    <androidx.cardview.widget.CardView-->
+                            <!--                        android:layout_width="60dp"-->
+                            <!--                        android:layout_height="60dp"-->
+                            <!--                        android:layout_gravity="center"-->
+                            <!--                        app:cardBackgroundColor="#2196F3"-->
+                            <!--                        app:cardCornerRadius="30dp">-->
+
+                            <!--                        <ImageView-->
+
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="match_parent"-->
+                            <!--                            android:padding="15dp"-->
+                            <!--                            android:src="@drawable/ic_notification"-->
+                            <!--                            android:tint="#fff" />-->
+                            <!--                    </androidx.cardview.widget.CardView>-->
+
+                            <net.promasoft.trawellmate.dsgn.CircleImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/demo_pack3" />
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:text="5 mins ago"
+                                android:orientation="vertical">
 
-                                />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:gravity="left"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:drawableLeft="@drawable/ic_location"
+                                        android:gravity="center"
+                                        android:text="Costa Rica"
+                                        android:textColor="@color/text_color_black" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="Rs.85,000"
+
+                                        android:textColor="@color/text_color_black" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Grand European Tour" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:layout_marginLeft="15dp"
+                                        android:text="Mar 12- Mar 20"
+                                        android:textSize="@dimen/text_size_small" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="5 mins ago"
+                                        android:textSize="@dimen/text_size_small"
+
+                                        />
+                                </LinearLayout>
+                            </LinearLayout>
+
                         </LinearLayout>
+
                     </LinearLayout>
 
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:padding="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="10dp"
+                    app:cardBackgroundColor="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="15dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal">
+
+
+                            <!--                    <androidx.cardview.widget.CardView-->
+                            <!--                        android:layout_width="60dp"-->
+                            <!--                        android:layout_height="60dp"-->
+                            <!--                        android:layout_gravity="center"-->
+                            <!--                        app:cardBackgroundColor="#2196F3"-->
+                            <!--                        app:cardCornerRadius="30dp">-->
+
+                            <!--                        <ImageView-->
+
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="match_parent"-->
+                            <!--                            android:padding="15dp"-->
+                            <!--                            android:src="@drawable/ic_notification"-->
+                            <!--                            android:tint="#fff" />-->
+                            <!--                    </androidx.cardview.widget.CardView>-->
+
+                            <net.promasoft.trawellmate.dsgn.CircleImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/demo_pack6" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:gravity="left"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:drawableLeft="@drawable/ic_location"
+                                        android:gravity="center"
+                                        android:text="Costa Rica"
+                                        android:textColor="@color/text_color_black" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="Rs.85,000"
+
+                                        android:textColor="@color/text_color_black" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Grand European Tour" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:layout_marginLeft="15dp"
+                                        android:text="Mar 12- Mar 20"
+                                        android:textSize="@dimen/text_size_small" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="5 mins ago"
+                                        android:textSize="@dimen/text_size_small"
+
+                                        />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:padding="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="10dp"
+                    app:cardBackgroundColor="#fff"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="15dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal">
+
+
+                            <!--                    <androidx.cardview.widget.CardView-->
+                            <!--                        android:layout_width="60dp"-->
+                            <!--                        android:layout_height="60dp"-->
+                            <!--                        android:layout_gravity="center"-->
+                            <!--                        app:cardBackgroundColor="#2196F3"-->
+                            <!--                        app:cardCornerRadius="30dp">-->
+
+                            <!--                        <ImageView-->
+
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="match_parent"-->
+                            <!--                            android:padding="15dp"-->
+                            <!--                            android:src="@drawable/ic_notification"-->
+                            <!--                            android:tint="#fff" />-->
+                            <!--                    </androidx.cardview.widget.CardView>-->
+
+                            <net.promasoft.trawellmate.dsgn.CircleImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/demo_pack1_1" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:gravity="left"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:drawableRight="@drawable/ic_location"
+                                        android:gravity="center"
+                                        android:text="Costa Rica"
+                                        android:textColor="@color/text_color_black" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="Rs.85,000"
+
+                                        android:textColor="@color/text_color_black" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Grand European Tour" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:layout_marginLeft="15dp"
+                                        android:text="Mar 12- Mar 20"
+                                        android:textSize="@dimen/text_size_small" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="5 mins ago"
+                                        android:textSize="@dimen/text_size_small" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-
+        </ScrollView>
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
