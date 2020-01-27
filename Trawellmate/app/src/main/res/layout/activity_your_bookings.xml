@@ -170,10 +170,11 @@
                                     android:orientation="vertical">
 
                                     <TextView
-                                        android:layout_width="match_parent"
+                                        android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="3dp"
                                         android:drawableRight="@drawable/ic_location"
+                                        android:drawablePadding="5dp"
                                         android:text="Departs" />
 
                                     <TextView
@@ -192,10 +193,11 @@
                                     android:orientation="vertical">
 
                                     <TextView
-                                        android:layout_width="match_parent"
+                                        android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="3dp"
                                         android:drawableRight="@drawable/ic_location"
+                                        android:drawablePadding="5dp"
                                         android:text="Arrives" />
 
                                     <TextView
@@ -214,9 +216,10 @@
                                     android:orientation="vertical">
 
                                     <TextView
-                                        android:layout_width="match_parent"
+                                        android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="3dp"
+                                        android:drawablePadding="5dp"
                                         android:drawableRight="@drawable/ic_schedule"
                                         android:text="Duration" />
 
