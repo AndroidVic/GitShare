@@ -32,11 +32,13 @@ import net.promasoft.trawellmate.frg.FrgBooking;
 import net.promasoft.trawellmate.frg.FrgHome;
 import net.promasoft.trawellmate.frg.FrgSaved;
 import net.promasoft.trawellmate.frg.FrgUserProfile;
+import net.promasoft.trawellmate.util.AlertMsgDialog;
 import net.promasoft.trawellmate.util.AlineActivityHelper;
 import net.promasoft.trawellmate.util.AnimHelper;
 import net.promasoft.trawellmate.util.DialogLogin;
+import net.promasoft.trawellmate.util.DrawerFrgListner;
 
-public class HomeAct extends AppCompatActivity {
+public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
 
     private BottomNavigationView bottomNavigationMenu;
 
@@ -58,31 +60,10 @@ public class HomeAct extends AppCompatActivity {
         FrgSaved frgSaved = FrgSaved.newInstance(HomeAct.this);
         FrgUserProfile frgUserProfile = FrgUserProfile.newInstance(HomeAct.this);
 
-        frgHome.setDrawerListner(new FrgHome.DrawerCloseListner() {
-            @Override
-            public void onCoordClose() {
-                bottom_menu_lay.setVisibility(View.VISIBLE);
-//                bottom_menu_lay.startAnimation(AnimationUtils.loadAnimation(HomeAct.this, R.anim.slide_up));
-                AnimHelper.slideUp(bottom_menu_lay);
-
-            }
-
-            @Override
-            public void onCoordOpened() {
-//                bottom_menu_lay.setVisibility(View.GONE);
-//                bottom_menu_lay.startAnimation(AnimationUtils.loadAnimation(HomeAct.this, R.anim.slide_down));
-                AnimHelper.slideDown(bottom_menu_lay);
-
-            }
-
-            @Override
-            public void onDrawerClicked() {
-
-                if (!mainDrawerLay.isDrawerOpen(GravityCompat.START)) {
-                    mainDrawerLay.openDrawer(GravityCompat.START);
-                }
-            }
-        });
+        frgHome.setDrawerListner(HomeAct.this);
+        frgBooking.setDrawerListner(HomeAct.this);
+        frgSaved.setDrawerListner(HomeAct.this);
+        frgUserProfile.setDrawerListner(HomeAct.this);
 
         bottomNavigationMenu = findViewById(R.id.ID_bottom_navigation);
         bottomNavigationMenu.setOnNavigationItemSelectedListener(menuItem -> {
@@ -162,7 +143,17 @@ public class HomeAct extends AppCompatActivity {
 
                         break;
                     case R.id.ID_nav_logout:
-                        finish();
+                        new AlertMsgDialog(HomeAct.this, AlertMsgDialog.DIA_LOGOUT, "Logout", "Are you sure to exit", "exit", new AlertMsgDialog.ActionListner() {
+                            @Override
+                            public void onPositive() {
+                                finish();
+                            }
+
+                            @Override
+                            public void onNegative() {
+
+                            }
+                        }).showPage();
                         break;
                 }
             }
@@ -222,4 +213,28 @@ public class HomeAct extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onCoordClose() {
+        bottom_menu_lay.setVisibility(View.VISIBLE);
+//                bottom_menu_lay.startAnimation(AnimationUtils.loadAnimation(HomeAct.this, R.anim.slide_up));
+        AnimHelper.slideUp(bottom_menu_lay);
+
+    }
+
+    @Override
+    public void onCoordOpened() {
+//                bottom_menu_lay.setVisibility(View.GONE);
+//                bottom_menu_lay.startAnimation(AnimationUtils.loadAnimation(HomeAct.this, R.anim.slide_down));
+        AnimHelper.slideDown(bottom_menu_lay);
+
+    }
+
+    @Override
+    public void onDrawerClicked() {
+
+        if (!mainDrawerLay.isDrawerOpen(GravityCompat.START)) {
+            mainDrawerLay.openDrawer(GravityCompat.START);
+        }
+
+    }
 }

@@ -41,7 +41,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Call to us: +91-914772967111"
+        android:id="@+id/callNo"
+        android:text="Call Us"
         android:textColor="@color/text_color_white"
         android:layout_margin="30dp"
         android:background="@drawable/btn_gradient_style"/>

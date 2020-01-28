@@ -1,6 +1,7 @@
 package net.promasoft.trawellmate;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,5 +15,9 @@ public class NotificationAct extends AppCompatActivity {
         setContentView(R.layout.layout_notification);
         new AlineActivityHelper(NotificationAct.this, false);
 
+        ImageView arwBack = findViewById(R.id.ID_arw_bck);
+        arwBack.setOnClickListener(view -> {
+            onBackPressed();
+        });
     }
 }

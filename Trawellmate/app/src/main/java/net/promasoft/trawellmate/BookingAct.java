@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import com.shawnlin.numberpicker.NumberPicker;
 
@@ -21,6 +22,13 @@ public class BookingAct extends AppCompatActivity {
         setContentView(R.layout.activity_booking);
         new AlineActivityHelper(BookingAct.this, true);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+
+        ImageView arwBack = findViewById(R.id.ID_arw_bck);
+        arwBack.setOnClickListener(view -> {
+            onBackPressed();
+        });
+
 //        NumberPicker numberPicker = (NumberPicker) findViewById(R.id.number_picker1);
 //        numberPicker.setMaxValue(10);
 //        numberPicker.setMinValue(1);

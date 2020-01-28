@@ -1,6 +1,7 @@
 package net.promasoft.trawellmate;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,5 +15,11 @@ public class PrivacyAct extends AppCompatActivity {
         setContentView(R.layout.activity_privacy_policy);
         new AlineActivityHelper(PrivacyAct.this, true);
 
+        ImageView arwBack = findViewById(R.id.ID_arw_bck);
+        arwBack.setOnClickListener(view -> {
+
+            onBackPressed();
+
+        });
     }
 }

@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.promasoft.trawellmate">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -19,9 +23,13 @@
         <activity android:name=".DemoEditAct" />
         <activity android:name=".LoginAct" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".WriteReview" />
+        <activity
+            android:name=".WriteReview"
+            android:theme="@style/AppTheme.TransparentWhite" />
         <activity android:name=".PrivacyAct" />
-        <activity android:name=".SplashScreenAct" />
+        <activity
+            android:name=".BookingAct"
+            android:theme="@style/AppTheme.TransparentWhite" />
         <activity android:name=".YourBookings" />
         <activity android:name=".VerifyOtp" />
         <activity android:name=".UserAccountAct" />
@@ -34,7 +42,7 @@
         <activity android:name=".AboutUsAct" />
         <activity android:name=".UserProfileAct" />
         <activity android:name=".MainActivity" /> <!-- android:theme="@style/AppTheme.Translucent" -->
-        <activity android:name=".BookingAct">
+        <activity android:name=".SplashScreenAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

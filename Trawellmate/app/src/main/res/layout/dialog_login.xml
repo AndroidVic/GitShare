@@ -270,7 +270,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_close" />
+            android:src="@drawable/ic_close_red" />
 
     </androidx.cardview.widget.CardView>
 

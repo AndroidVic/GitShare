@@ -41,7 +41,8 @@
 
 
             <ImageView
-                android:id="@+id/back_btn"
+                android:id="@+id/ID_arw_bck"
+
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentTop="true"

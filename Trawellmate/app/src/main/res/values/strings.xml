@@ -36,8 +36,14 @@
         <item>Mrs.</item>
     </string-array>
 
+    <string name="no_connection">No Internet Connection</string>
+
+
     <string name="number_picker_formatter">%01d</string>
     <string name="roboto_light">sans-serif-light</string>
     <string name="strike_text"><strike>₹ 85,000</strike></string>
+
+    <string name="app_per_check">Please check your app permission in settings</string>
+
 
 </resources>

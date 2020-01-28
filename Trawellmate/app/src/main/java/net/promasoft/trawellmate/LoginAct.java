@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -16,8 +17,24 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 
 import net.promasoft.trawellmate.dsgn.CustomTextLink;
+import net.promasoft.trawellmate.util.LoginReqsHandler;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginAct extends AppCompatActivity {
 
@@ -108,6 +125,34 @@ public class LoginAct extends AppCompatActivity {
         loginBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+//                initVolley();
+//                try {
+//                    LoginReqsHandler.getLogin("karthik@gmail.com", "karthik", LoginAct.this, new Handler(new Handler.Callback() {
+//                        @Override
+//                        public boolean handleMessage(Message msg) {
+////                    Log.d("LoginAct", "" + msg);
+//                            try {
+//                                if (msg != null && msg.obj != null) {
+//
+//                                    String resp = (String) msg.obj;
+//                                    Toast.makeText(LoginAct.this, "" + resp, Toast.LENGTH_SHORT).show();
+//
+//                                }
+//                            } catch (Exception ex) {
+//                                Log.e("LoginReceived", "error " + ex);
+//                            } finally {
+////                        loadingScreen.cancelLoading(null);
+//
+//                            }
+//
+//                            return false;
+//                        }
+//                    }));
+//                } catch (Exception ex) {
+//
+//                }
+
                 startActivity(new Intent(LoginAct.this, HomeAct.class));
             }
         });
@@ -122,6 +167,42 @@ public class LoginAct extends AppCompatActivity {
             startActivity(new Intent(LoginAct.this, ForgotPAsswordAct.class));
         });
 
+
+    }
+
+    private void initVolley() {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        final String url = "http://192.168.1.46:8000/api/login";
+// prepare the Request
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        Log.d("Response", response);
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Log.d("Error.Response", "error");
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("email", "karthik@gmail.com");
+                params.put("password", "karthik");
+
+                return params;
+            }
+        };
+        queue.add(postRequest);
 
     }
 

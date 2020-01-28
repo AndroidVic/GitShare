@@ -82,6 +82,12 @@ public class DetailsAct extends AppCompatActivity {
             }
         });
 
+
+        ImageView arwBack = findViewById(R.id.ID_arw_bck);
+        arwBack.setOnClickListener(view -> {
+            onBackPressed();
+        });
+
         initAboutPackage();
 
         initDaywiseLay();

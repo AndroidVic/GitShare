@@ -15,8 +15,9 @@
         <FrameLayout
             android:id="@+id/hm_base_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></FrameLayout>
+            android:layout_height="match_parent">
 
+        </FrameLayout>
 
         <LinearLayout
             android:id="@+id/ID_bottom_menu_lay"

@@ -6,307 +6,323 @@
     android:layout_height="match_parent"
     tools:context=".GoThroughAct">
 
-    <!--page 1-->
-    <RelativeLayout
-        android:id="@+id/ID_gothr_page1"
+    <ViewFlipper
+        android:id="@+id/view_flipper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible">
-
-        <LinearLayout
+        android:layout_height="match_parent">
+        <!--page 1-->
+        <RelativeLayout
+            android:id="@+id/ID_gothr_page1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:id="@+id/Ida_gothr_img1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="100dp"
-                    android:layout_marginEnd="-300dp"
-                    android:alpha="0.25"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/gothr_bg1" />
-
-                <ImageView
-                    android:id="@+id/Ida_gothr_img2"
-                    android:layout_width="match_parent"
-                    android:layout_height="240dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="-300dp"
-                    android:alpha="0.1"
-                    android:scaleType="fitStart"
-                    android:src="@drawable/gothr_bg3"
-                    android:tint="#4BAAFF" />
-
-                <ImageView
-                    android:id="@+id/Ida_gothr_img3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginVertical="100dp"
-                    android:layout_marginStart="150dp"
-                    android:layout_marginEnd="-300dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/gothr_bg2" />
-
-                <ImageView
-                    android:id="@+id/Ida_gothr_obj1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginVertical="60dp"
-                    android:src="@drawable/gothr_obj1" />
-
-
-            </RelativeLayout>
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2.5"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/open_san_script"
-                    android:text="Let's Travelling"
-                    android:textSize="@dimen/text_size_extra_large"
-                    android:textStyle="bold" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut" />
+                    <ImageView
+                        android:id="@+id/Ida_gothr_img1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="100dp"
+                        android:layout_marginEnd="-300dp"
+                        android:alpha="0.25"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/gothr_bg1" />
 
-                <Button
-                    android:id="@+id/Ida_gothr_next1"
-                    android:layout_width="120dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="-35dp"
-                    android:background="@drawable/grad_login_bt"
-                    android:gravity="left|center"
-                    android:paddingStart="30dp"
-                    android:text="Skip"
-                    android:textColor="@color/text_color_white" />
+                    <ImageView
+                        android:id="@+id/Ida_gothr_img2"
+                        android:layout_width="match_parent"
+                        android:layout_height="240dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="-300dp"
+                        android:alpha="0.1"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/gothr_bg3"
+                        android:tint="#4BAAFF" />
+
+                    <ImageView
+                        android:id="@+id/Ida_gothr_img3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="100dp"
+                        android:layout_marginStart="150dp"
+                        android:layout_marginEnd="-300dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/gothr_bg2" />
+
+                    <ImageView
+                        android:id="@+id/Ida_gothr_obj1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="60dp"
+                        android:src="@drawable/gothr_obj1" />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/open_san_script"
+                        android:text="Explore It"
+                        android:textSize="@dimen/text_size_extra_large"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="There is a whole world out there,\npack your backpack..." />
+
+                    <Button
+                        android:id="@+id/Ida_gothr_next1"
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="-35dp"
+                        android:background="@drawable/grad_login_bt"
+                        android:gravity="left|center"
+                        android:paddingStart="30dp"
+                        android:text="Skip"
+                        android:textColor="@color/text_color_white" />
+                </LinearLayout>
+
             </LinearLayout>
+        </RelativeLayout>
 
-        </LinearLayout>
-    </RelativeLayout>
-
-    <!--page 2-->
-    <RelativeLayout
-        android:id="@+id/ID_gothr_page2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <LinearLayout
+        <!--page 2-->
+        <RelativeLayout
+            android:id="@+id/ID_gothr_page2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:id="@+id/Ida_gothr_img4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="30dp"
-                    android:alpha="0.2"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/gothr_bg4"
-                    android:visibility="visible" />
-
-                <ImageView
-                    android:id="@+id/Ida_gothr_img5"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="-300dp"
-                    android:layout_marginEnd="100dp"
-                    android:alpha="0.1"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/gothr_bg1" />
-
-
-                <ImageView
-                    android:id="@+id/Ida_gothr_img6"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginVertical="100dp"
-                    android:layout_marginStart="-300dp"
-                    android:layout_marginEnd="180dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/gothr_bg2" />
-
-                <ImageView
-                    android:id="@+id/Ida_gothr_obj2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginVertical="60dp"
-                    android:src="@drawable/gothr_obj2" />
-
-            </RelativeLayout>
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2.5"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/open_san_script"
-                    android:text="Navigation"
-                    android:textSize="@dimen/text_size_extra_large"
-                    android:textStyle="bold" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut" />
+                    <ImageView
+                        android:id="@+id/Ida_gothr_img4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:alpha="0.2"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/gothr_bg4"
+                        android:visibility="visible" />
 
-                <Button
-                    android:id="@+id/Ida_gothr_next2"
-                    android:layout_width="120dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="-35dp"
-                    android:background="@drawable/grad_login_bt"
-                    android:gravity="left|center"
-                    android:paddingStart="30dp"
-                    android:text="Skip"
-                    android:textColor="@color/text_color_white" />
+                    <ImageView
+                        android:id="@+id/Ida_gothr_img5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="-300dp"
+                        android:layout_marginEnd="100dp"
+                        android:alpha="0.1"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/gothr_bg1" />
+
+
+                    <ImageView
+                        android:id="@+id/Ida_gothr_img6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="100dp"
+                        android:layout_marginStart="-300dp"
+                        android:layout_marginEnd="180dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/gothr_bg2" />
+
+                    <ImageView
+                        android:id="@+id/Ida_gothr_obj2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="60dp"
+                        android:src="@drawable/gothr_obj2" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/open_san_script"
+                        android:text="Feel It"
+                        android:textSize="@dimen/text_size_extra_large"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="Journey of a thousand miles begins\nwith a single step..." />
+
+                    <Button
+                        android:id="@+id/Ida_gothr_next2"
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="-35dp"
+                        android:background="@drawable/grad_login_bt"
+                        android:gravity="left|center"
+                        android:paddingStart="30dp"
+                        android:text="Skip"
+                        android:textColor="@color/text_color_white" />
+                </LinearLayout>
+
             </LinearLayout>
+        </RelativeLayout>
 
-        </LinearLayout>
-    </RelativeLayout>
-
-    <!--page 3-->
-    <RelativeLayout
-        android:id="@+id/ID_gothr_page3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <LinearLayout
+        <!--page 3-->
+        <RelativeLayout
+            android:id="@+id/ID_gothr_page3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:id="@+id/Ida_gothr_img7"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="-300dp"
-                    android:layout_marginEnd="80dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/gothr_bg4"
-                    android:tint="#D0E9FF"
-                    android:visibility="visible" />
-
-                <ImageView
-                    android:id="@+id/Ida_gothr_img8"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="-300dp"
-                    android:layout_marginTop="100dp"
-                    android:layout_marginEnd="100dp"
-                    android:layout_marginBottom="95dp"
-                    android:alpha="0.12"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/gothr_bg1" />
-
-                <ImageView
-                    android:id="@+id/Ida_gothr_img9"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="-300dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="110dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/gothr_bg4"
-                    android:tint="#E4F3FF"
-                    android:visibility="visible" />
-
-
-                <ImageView
-                    android:id="@+id/Ida_gothr_obj3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginVertical="60dp"
-                    android:src="@drawable/gothr_obj3" />
-
-            </RelativeLayout>
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2.5"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/open_san_script"
-                    android:text="Let's Travelling"
-                    android:textSize="@dimen/text_size_extra_large"
-                    android:textStyle="bold" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut" />
+                    <ImageView
+                        android:id="@+id/Ida_gothr_img7"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="-300dp"
+                        android:layout_marginEnd="80dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/gothr_bg4"
+                        android:tint="#D0E9FF"
+                        android:visibility="visible" />
 
-                <Button
-                    android:id="@+id/Ida_gothr_next3"
-                    android:layout_width="130dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="-20dp"
-                    android:background="@drawable/grad_login_bt"
-                    android:gravity="left|center"
-                    android:paddingStart="30dp"
-                    android:text="Let's Go"
-                    android:textColor="@color/text_color_white" />
+                    <ImageView
+                        android:id="@+id/Ida_gothr_img8"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="-300dp"
+                        android:layout_marginTop="100dp"
+                        android:layout_marginEnd="100dp"
+                        android:layout_marginBottom="95dp"
+                        android:alpha="0.12"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/gothr_bg1" />
+
+                    <ImageView
+                        android:id="@+id/Ida_gothr_img9"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="-300dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="110dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/gothr_bg4"
+                        android:tint="#E4F3FF"
+                        android:visibility="visible" />
+
+
+                    <ImageView
+                        android:id="@+id/Ida_gothr_obj3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="60dp"
+                        android:src="@drawable/gothr_obj3" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/open_san_script"
+                        android:text="Love It"
+                        android:textSize="@dimen/text_size_extra_large"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="You don't have to be rich to travel,\nIt's your desire !!!" />
+
+                    <Button
+                        android:id="@+id/Ida_gothr_next3"
+                        android:layout_width="130dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="-20dp"
+                        android:background="@drawable/grad_login_bt"
+                        android:gravity="left|center"
+                        android:paddingStart="30dp"
+                        android:text="Let's Go"
+                        android:textColor="@color/text_color_white" />
+                </LinearLayout>
+
             </LinearLayout>
+        </RelativeLayout>
 
-        </LinearLayout>
-    </RelativeLayout>
+    </ViewFlipper>
+
+    <LinearLayout
+        android:id="@+id/ID_dot_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ID_fst_next"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal"></LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

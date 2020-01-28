@@ -84,7 +84,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/ID_menu_iv"
+                        android:id="@+id/ID_arw_bck"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"

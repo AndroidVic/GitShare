@@ -43,13 +43,18 @@
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
                 android:hint="First Name"
-                android:textSize="@dimen/text_size_small" />
+                android:textSize="@dimen/text_size_small">
+
+
+            </com.google.android.material.textfield.TextInputEditText>
 
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputEditText

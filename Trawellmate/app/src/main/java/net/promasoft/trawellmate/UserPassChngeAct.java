@@ -2,6 +2,7 @@ package net.promasoft.trawellmate;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +19,12 @@ public class UserPassChngeAct extends AppCompatActivity {
         Button profileSave = findViewById(R.id.ID_pass_chng_bt);
         profileSave.setOnClickListener(view -> {
             finish();
+        });
+
+
+        ImageView arwBack = findViewById(R.id.ID_arw_bck);
+        arwBack.setOnClickListener(view -> {
+            onBackPressed();
         });
 
     }

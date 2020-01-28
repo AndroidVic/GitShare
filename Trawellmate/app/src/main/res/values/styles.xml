@@ -15,8 +15,8 @@
 
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-<!--        <item name="android:windowTranslucentStatus">true</item>-->
-<!--        <item name="android:windowTranslucentNavigation">true</item>-->
+        <!--        <item name="android:windowTranslucentStatus">true</item>-->
+        <!--        <item name="android:windowTranslucentNavigation">true</item>-->
     </style>
 
     <style name="AppTheme.TransparentTheme">
@@ -43,6 +43,11 @@
         <item name="colorControlActivated">@color/colorGold</item>
         <item name="android:minHeight">20dp</item>
         <item name="android:maxHeight">20dp</item>
+    </style>
+
+    <style name="GoldStar">
+        <item name="colorControlNormal">#B1B0B0</item>
+        <item name="colorControlActivated">@color/colorGold</item>
     </style>
 
     <style name="AppTheme.WhiteAccent">
