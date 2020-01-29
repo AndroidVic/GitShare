@@ -36,10 +36,11 @@
                 android:layout_marginEnd="8dp">
 
                 <EditText
-                    android:id="@+id/et_name"
+                    android:id="@+id/ID_signup_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/name" />
+                    android:hint="Nick Name"
+                    android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <RelativeLayout
@@ -47,7 +48,7 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layoutPhoneNo"
+                    android:id="@+id/ID_layoutPhoneNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -55,7 +56,7 @@
                     android:layout_marginEnd="8dp">
 
                     <EditText
-                        android:id="@+id/ph"
+                        android:id="@+id/ID_signup_phone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/phone_no"
@@ -64,7 +65,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
-                    android:id="@+id/tv_verify"
+                    android:id="@+id/ID_mobile_verify"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -89,10 +90,11 @@
                 android:layout_marginEnd="8dp">
 
                 <EditText
-                    android:id="@+id/et_email"
+                    android:id="@+id/ID_signup_email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/email" />
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <RelativeLayout
@@ -108,13 +110,15 @@
                     android:layout_marginEnd="8dp">
 
                     <EditText
-                        android:id="@+id/et_password"
+                        android:id="@+id/ID_signup_password"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="@string/password" />
+                        android:hint="@string/password"
+                        android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageView
+                    android:id="@+id/ID_signup_pass_visible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -138,13 +142,15 @@
                     android:layout_marginEnd="8dp">
 
                     <EditText
-                        android:id="@+id/et_cpassword"
+                        android:id="@+id/ID_signup_password_confirm"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="@string/confirm_password" />
+                        android:hint="@string/confirm_password"
+                        android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageView
+                    android:id="@+id/ID_signup_pass_cfrm_visible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -177,12 +183,13 @@
                     android:layout_height="wrap_content"
                     android:text="@string/already_hv_act" />
 
-                <TextView
+                <net.promasoft.trawellmate.dsgn.CustomTextLink
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="@string/sign_in"
-                    android:textColor="@color/colorblack" />
+                    android:textColor="@color/colorPrimary" />
             </LinearLayout>
 
             <ImageView

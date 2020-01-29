@@ -22,7 +22,7 @@
         <activity android:name=".DetailsAct" />
         <activity android:name=".DemoEditAct" />
         <activity android:name=".LoginAct" />
-        <activity android:name=".SignupActivity" />
+        <activity android:name=".SplashScreenAct" />
         <activity
             android:name=".WriteReview"
             android:theme="@style/AppTheme.TransparentWhite" />
@@ -42,7 +42,8 @@
         <activity android:name=".AboutUsAct" />
         <activity android:name=".UserProfileAct" />
         <activity android:name=".MainActivity" /> <!-- android:theme="@style/AppTheme.Translucent" -->
-        <activity android:name=".SplashScreenAct">
+        <activity android:name=".SignupActivity" /> <!-- android:theme="@style/AppTheme.Translucent" -->
+        <activity android:name=".StartPageAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

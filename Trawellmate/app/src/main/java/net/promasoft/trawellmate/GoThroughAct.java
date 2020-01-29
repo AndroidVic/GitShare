@@ -3,6 +3,7 @@ package net.promasoft.trawellmate;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -37,7 +38,13 @@ public class GoThroughAct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_go_through);
+        Configuration config = getResources().getConfiguration();
+        if (config.screenHeightDp >= 650) {
+            setContentView(R.layout.activity_go_through);
+        } else {
+            setContentView(R.layout.activity_go_through_small);
+        }
+
 
         RelativeLayout page1 = findViewById(R.id.ID_gothr_page1);
         RelativeLayout page2 = findViewById(R.id.ID_gothr_page2);

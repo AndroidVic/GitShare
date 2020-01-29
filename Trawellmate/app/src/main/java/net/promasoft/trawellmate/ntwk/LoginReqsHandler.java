@@ -1,4 +1,4 @@
-package net.promasoft.trawellmate.util;
+package net.promasoft.trawellmate.ntwk;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -24,7 +24,7 @@ import java.net.URL;
 public class LoginReqsHandler {
 
     private static final int BUFFER_SIZE = 1024;
-    private static final String SERVICE_URL = "http://192.168.1.46:8000/api/login";
+    private static final String SERVICE_URL = "https://trawellmate.com/api/v1/users/";
 
     public static Drawable getDrawable(Context context, int id) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -79,7 +79,7 @@ public class LoginReqsHandler {
                                     connection.setDoOutput(true);
                                     connection.setRequestMethod("POST");
 //                                    connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-//                                    connection.setRequestProperty("charset", "utf-8");
+                                    connection.setRequestProperty("charset", "utf-8");
                                 } else {
                                     connection.setDoOutput(false);
                                     connection.setRequestMethod("GET");
@@ -154,11 +154,17 @@ public class LoginReqsHandler {
     }
 
     public static void getLogin(String userName, String password, Context context, Handler callback) {
+        StringBuilder params = new StringBuilder();
+        params.append("user_name=" + userName);
+        params.append("&user_password=" + password);
+        request(context, "", params.toString(), callback);
+    }
 
-        LoginArgs loginArgs = new LoginArgs();
-        loginArgs.email = userName;
-        loginArgs.password = password;
-        request(context, "", new Gson().toJson(loginArgs), callback);
+
+    public static void checkMobileNumber(Context context, String mobile, Handler callback) {
+        StringBuilder params = new StringBuilder();
+        params.append("mobile_number=" + mobile);
+        request(context, "mobile_stat", params.toString(), callback);
     }
 
 

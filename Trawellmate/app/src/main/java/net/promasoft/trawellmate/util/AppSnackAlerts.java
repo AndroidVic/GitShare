@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.snackbar.SnackbarContentLayout;
 
-public class AppAlerts {
+public class AppSnackAlerts {
 
 
     public static void showMessage(View view, String msg) {
