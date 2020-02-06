@@ -9,13 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
 import net.promasoft.trawellmate.adp.AdpDaWiseDetails;
-import net.promasoft.trawellmate.arg.DataDayWise;
+import net.promasoft.trawellmate.argapp.DataDayWise;
 
 import java.util.ArrayList;
 
@@ -53,6 +50,7 @@ public class DemoEditAct extends AppCompatActivity {
             @Override
             public void onClickItem(View view, int type) {
 
+
             }
         });
 
@@ -61,7 +59,6 @@ public class DemoEditAct extends AppCompatActivity {
         ViewCompat.setNestedScrollingEnabled(recyclerView, false);
 
         recyclerView.setItemViewCacheSize(5);
-
 
         noDataLay = findViewById(R.id.ID_daywise_no_data);
         getData();

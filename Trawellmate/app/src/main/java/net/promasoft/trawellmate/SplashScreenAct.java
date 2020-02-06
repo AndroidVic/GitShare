@@ -9,7 +9,11 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import net.promasoft.trawellmate.argapp.UserConstantResult;
+import net.promasoft.trawellmate.db.SharedPrefHelper;
+import net.promasoft.trawellmate.db.UserPrefHelper;
 import net.promasoft.trawellmate.util.AlineActivityHelper;
+import net.promasoft.trawellmate.util.AppConstant;
 
 public class SplashScreenAct extends AppCompatActivity {
 
@@ -30,6 +34,12 @@ public class SplashScreenAct extends AppCompatActivity {
         startAnim(appLogo, 850, R.anim.fade_in_anim);
         continueService(2);
 
+        UserConstantResult userConst = UserPrefHelper.getInstance(SplashScreenAct.this).getUserConst();
+        if (userConst != null) {
+            AppConstant.TOKEN = userConst.TOKEN;
+            AppConstant.USER_ID = userConst.USER_ID;
+        }
+
     }
 
     private void continueService(int delay) {
@@ -45,7 +55,16 @@ public class SplashScreenAct extends AppCompatActivity {
     }
 
     private void resumeFlow() {
-        startActivity(new Intent(SplashScreenAct.this, GoThroughAct.class));
+        if (SharedPrefHelper.getInstance(SplashScreenAct.this).getIsFirstTime()) {
+            startActivity(new Intent(SplashScreenAct.this, GoThroughAct.class));
+        } else {
+            if (SharedPrefHelper.getInstance(SplashScreenAct.this).getIsLogin()) {
+                startActivity(new Intent(SplashScreenAct.this, HomeAct.class));
+            } else {
+                startActivity(new Intent(SplashScreenAct.this, StartPageAct.class));
+            }
+        }
+
     }
 
     private void startAnim(final View view, int delay, final int anim) {

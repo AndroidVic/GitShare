@@ -57,5 +57,27 @@ public class CheckPermission {
         return false;
     }
 
+    public static boolean selfPermissionList(Activity activity, String[] permissions) {
+
+        List<String> listPermissionsNeeded = new ArrayList<>();
+
+        for (String permsn : permissions) {
+            if (ContextCompat.checkSelfPermission(activity, permsn) != PackageManager.PERMISSION_GRANTED) {
+                listPermissionsNeeded.add(permsn);
+            }
+        }
+        if (!listPermissionsNeeded.isEmpty()) {
+
+            ActivityCompat.requestPermissions(activity, listPermissionsNeeded.toArray
+                    (new String[listPermissionsNeeded.size()]), MY_PERMISSIONS_REQUEST);
+
+        } else {
+            // continueService();
+            //   finish();
+            return true;
+        }
+        return false;
+    }
+
 
 }

@@ -54,6 +54,18 @@ public class GoThroughAct extends AppCompatActivity {
         Button nxtBt2 = findViewById(R.id.Ida_gothr_next2);
         Button nxtBt3 = findViewById(R.id.Ida_gothr_next3);
 
+        Button skipBt1 = findViewById(R.id.Ida_gothr_skip1);
+        Button skipBt2 = findViewById(R.id.Ida_gothr_skip2);
+        Button skipBt3 = findViewById(R.id.Ida_gothr_skip3);
+        skipBt1.setOnClickListener(view -> {
+            startActivity(new Intent(GoThroughAct.this, StartPageAct.class));
+        });
+        skipBt2.setOnClickListener(view -> {
+            startActivity(new Intent(GoThroughAct.this, StartPageAct.class));
+        });
+        skipBt3.setOnClickListener(view -> {
+            startActivity(new Intent(GoThroughAct.this, StartPageAct.class));
+        });
 
         nxtBt1.setOnClickListener(view -> {
             page1.setVisibility(View.GONE);
@@ -61,7 +73,6 @@ public class GoThroughAct extends AppCompatActivity {
             page2.setVisibility(View.VISIBLE);
             page2.startAnimation(AnimationUtils.loadAnimation(GoThroughAct.this, R.anim.slide_from_right));
             initPage2Anim();
-
         });
         nxtBt2.setOnClickListener(view -> {
             page2.setVisibility(View.GONE);
@@ -72,8 +83,8 @@ public class GoThroughAct extends AppCompatActivity {
         });
         nxtBt3.setOnClickListener(view -> {
             finish();
-            startActivity(new Intent(GoThroughAct.this, LoginAct.class));
-
+//            overridePendingTransition(R.anim.fade_out_anim, R.anim.fade_in_anim);
+            startActivity(new Intent(GoThroughAct.this, StartPageAct.class));
         });
 
         initPage1Anim();
@@ -234,7 +245,7 @@ public class GoThroughAct extends AppCompatActivity {
 
         startAnim(gothrImg1, 100, R.anim.floating_anim_y_up);
         startAnim(gothrImg3, 200, R.anim.floating_anim_x);
-        startAnim(gothrImg2, 300, R.anim.floating_anim_x_lng);
+        startAnim(gothrImg2, 100, R.anim.floating_anim_x_lng);
 
         startAnim(gothrObj1, 350, R.anim.floating_anim_x_lng);
 
@@ -251,6 +262,7 @@ public class GoThroughAct extends AppCompatActivity {
                     view.startAnimation(AnimationUtils.loadAnimation(GoThroughAct.this, anim));
 
                 } catch (Exception e) {
+
 
                 }
 //                ObjectAnimator anim = (ObjectAnimator) AnimatorInflater.loadAnimator(getContext(), R.animator.flip_anim);

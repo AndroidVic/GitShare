@@ -14,6 +14,7 @@
 
     <color name="colorgreen">#45BF55</color>
 
+    <color name="colorlightgrey">#A2A2A2</color>
     <color name="colorgrey">#777C77</color>
     <color name="colordarkgrey">#404440</color>
     <color name="colorblack">#050505</color>

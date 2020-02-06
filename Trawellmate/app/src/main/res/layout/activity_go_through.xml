@@ -93,18 +93,36 @@
                         android:gravity="center"
                         android:text="There is a whole world out there,\npack your backpack..." />
 
-                    <Button
-                        android:id="@+id/Ida_gothr_next1"
-                        android:layout_width="120dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="end"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="-35dp"
-                        android:background="@drawable/grad_login_bt"
-                        android:gravity="left|center"
-                        android:paddingStart="30dp"
-                        android:text="Skip"
-                        android:textColor="@color/text_color_white" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/Ida_gothr_skip1"
+                            android:layout_width="120dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="-35dp"
+                            android:background="@drawable/grad_login_bt"
+                            android:gravity="right|center"
+                            android:paddingEnd="30dp"
+                            android:text="Skip"
+                            android:textColor="@color/text_color_white" />
+
+                        <Button
+                            android:id="@+id/Ida_gothr_next1"
+                            android:layout_width="120dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="-35dp"
+                            android:background="@drawable/grad_login_bt"
+                            android:gravity="left|center"
+                            android:paddingStart="30dp"
+                            android:text="Next"
+                            android:textColor="@color/text_color_white" />
+
+                    </RelativeLayout>
                 </LinearLayout>
 
             </LinearLayout>
@@ -194,18 +212,37 @@
                         android:gravity="center"
                         android:text="Journey of a thousand miles begins\nwith a single step..." />
 
-                    <Button
-                        android:id="@+id/Ida_gothr_next2"
-                        android:layout_width="120dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="end"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="-35dp"
-                        android:background="@drawable/grad_login_bt"
-                        android:gravity="left|center"
-                        android:paddingStart="30dp"
-                        android:text="Skip"
-                        android:textColor="@color/text_color_white" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/Ida_gothr_skip2"
+                            android:layout_width="120dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="-35dp"
+                            android:background="@drawable/grad_login_bt"
+                            android:gravity="right|center"
+                            android:paddingEnd="30dp"
+                            android:text="Skip"
+                            android:textColor="@color/text_color_white" />
+
+                        <Button
+                            android:id="@+id/Ida_gothr_next2"
+                            android:layout_width="120dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="-35dp"
+                            android:background="@drawable/grad_login_bt"
+                            android:gravity="left|center"
+                            android:paddingStart="30dp"
+                            android:text="Next"
+                            android:textColor="@color/text_color_white" />
+
+                    </RelativeLayout>
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -295,20 +332,40 @@
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="10dp"
                         android:gravity="center"
-                        android:text="You don't have to be rich to travel,\nIt's your desire !!!" />
+                        android:text="You don't have to be rich to travel well,\nIt's your desire that makes you travel !!!" />
 
-                    <Button
-                        android:id="@+id/Ida_gothr_next3"
-                        android:layout_width="130dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="end"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="-20dp"
-                        android:background="@drawable/grad_login_bt"
-                        android:gravity="left|center"
-                        android:paddingStart="30dp"
-                        android:text="Let's Go"
-                        android:textColor="@color/text_color_white" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/Ida_gothr_skip3"
+                            android:layout_width="120dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="-35dp"
+                            android:background="@drawable/grad_login_bt"
+                            android:gravity="right|center"
+                            android:paddingEnd="30dp"
+                            android:text="Skip"
+                            android:textColor="@color/text_color_white" />
+
+                        <Button
+                            android:id="@+id/Ida_gothr_next3"
+                            android:layout_width="130dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="-20dp"
+                            android:background="@drawable/grad_login_bt"
+                            android:gravity="left|center"
+                            android:paddingStart="30dp"
+                            android:text="Let's Go"
+                            android:textColor="@color/text_color_white" />
+
+
+                    </RelativeLayout>
+
                 </LinearLayout>
 
             </LinearLayout>

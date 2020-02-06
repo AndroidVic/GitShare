@@ -42,7 +42,6 @@
 
             <ImageView
                 android:id="@+id/ID_arw_bck"
-
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentTop="true"
@@ -62,6 +61,7 @@
                     android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:src="@drawable/white_card_circle_half_bg" />
+
             </RelativeLayout>
 
             <RelativeLayout
@@ -79,15 +79,40 @@
                     android:layout_gravity="center"
                     android:orientation="vertical">
 
-                    <net.promasoft.trawellmate.dsgn.CircleImageView
-                        android:id="@+id/user_profile"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/userimg_1" />
+                    <RelativeLayout
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content">
+
+                        <net.promasoft.trawellmate.dsgn.CircleImageView
+                            android:id="@+id/ID_profile_img"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_centerHorizontal="true"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_account_circle" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_margin="5dp"
+                            app:cardBackgroundColor="@color/colorWhite"
+                            app:cardCornerRadius="15dp">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:padding="5dp"
+                                android:src="@drawable/ic_camera" />
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </RelativeLayout>
 
                     <TextView
-                        android:id="@+id/user_name"
+                        android:id="@+id/ID_profile_nickname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/user_profile"
@@ -134,6 +159,7 @@
                     android:layout_weight="1">
 
                     <EditText
+                        android:id="@+id/ID_profile_fname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="First Name"
@@ -147,6 +173,7 @@
                     android:layout_weight="1">
 
                     <EditText
+                        android:id="@+id/ID_profile_lname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Last Name"
@@ -267,7 +294,7 @@
                     android:layout_marginEnd="8dp">
 
                     <EditText
-                        android:id="@+id/ph1"
+                        android:id="@+id/ID_profile_mobile"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/phone_no"
@@ -288,7 +315,7 @@
                     android:paddingTop="5dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="5dp"
-                    android:text="@string/verify"
+                    android:text="Verified"
                     android:textSize="12sp" />
 
             </RelativeLayout>
@@ -306,7 +333,7 @@
                     android:layout_marginEnd="8dp">
 
                     <EditText
-                        android:id="@+id/email"
+                        android:id="@+id/ID_profile_email"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="EmailID"
@@ -327,10 +354,11 @@
                     android:paddingTop="5dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="5dp"
-                    android:text="@string/verify"
+                    android:text="Verified"
                     android:textSize="12sp" />
 
             </RelativeLayout>
+
 
             <Button
                 android:id="@+id/ID_prf_save"

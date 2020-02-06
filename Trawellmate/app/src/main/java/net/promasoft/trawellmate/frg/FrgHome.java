@@ -12,8 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,10 +24,9 @@ import com.google.android.material.appbar.AppBarLayout;
 import net.promasoft.trawellmate.DetailsAct;
 import net.promasoft.trawellmate.NotificationAct;
 import net.promasoft.trawellmate.R;
+import net.promasoft.trawellmate.SearchViewAct;
 import net.promasoft.trawellmate.util.AlertMsgDialog;
-import net.promasoft.trawellmate.util.AnimHelper;
 import net.promasoft.trawellmate.util.CheckPermissionHelper;
-import net.promasoft.trawellmate.util.DialogLogin;
 import net.promasoft.trawellmate.util.DrawerFrgListner;
 
 import java.util.ArrayList;
@@ -41,8 +38,7 @@ public class FrgHome extends Fragment {
     private Activity mActivity;
     private View view;
     private DrawerFrgListner mDrawerListner;
-    private Button loginBt;
-    private EditText searchEditText;
+    private TextView searchEditText;
     private SpeechRecognizer recognizer;
     private ImageView closeBt, speachBt;
 
@@ -54,7 +50,6 @@ public class FrgHome extends Fragment {
     public static FrgHome newInstance(Activity activity) {
         return new FrgHome(activity);
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -79,14 +74,14 @@ public class FrgHome extends Fragment {
             }
         });
 
-        loginBt = mView.findViewById(R.id.ID_hm_login);
-        AnimHelper.slideDown(loginBt);
-
-        loginBt.setOnClickListener(view -> {
-            loginBt.clearAnimation();
-            loginBt.setVisibility(View.GONE);
-            new DialogLogin(mActivity).showPage();
-        });
+//        loginBt = mView.findViewById(R.id.ID_hm_login);
+//        AnimHelper.slideDown(loginBt);
+//
+//        loginBt.setOnClickListener(view -> {
+//            loginBt.clearAnimation();
+//            loginBt.setVisibility(View.GONE);
+//            new DialogLogin(mActivity).showPage();
+//        });
 
         searchLay = mView.findViewById(R.id.ID_search_bg_lay);
 
@@ -103,9 +98,9 @@ public class FrgHome extends Fragment {
                         if (mDrawerListner != null) {
                             mDrawerListner.onCoordClose();
                         }
-                        if (loginBt.getVisibility() == View.VISIBLE) {
-                            AnimHelper.slideUp(loginBt);
-                        }
+//                        if (loginBt.getVisibility() == View.VISIBLE) {
+//                            AnimHelper.slideUp(loginBt);
+//                        }
                         searchLay.setVisibility(View.VISIBLE);
                         searchLay.startAnimation(AnimationUtils.loadAnimation(mActivity, R.anim.fade_in_anim));
                     }
@@ -125,9 +120,9 @@ public class FrgHome extends Fragment {
                         if (mDrawerListner != null) {
                             mDrawerListner.onCoordOpened();
                         }
-                        if (loginBt.getVisibility() == View.VISIBLE) {
-                            AnimHelper.slideDown(loginBt);
-                        }
+//                        if (loginBt.getVisibility() == View.VISIBLE) {
+//                            AnimHelper.slideDown(loginBt);
+//                        }
                         searchLay.setVisibility(View.GONE);
                         searchLay.startAnimation(AnimationUtils.loadAnimation(mActivity, R.anim.fade_out_anim));
 
@@ -174,7 +169,18 @@ public class FrgHome extends Fragment {
             startActivity(new Intent(mActivity, DetailsAct.class));
         });
 
+        ImageView searchICon = mView.findViewById(R.id.ID_search_icon);
         searchEditText = mView.findViewById(R.id.ID_search_et);
+
+        searchICon.setOnClickListener(view1 -> {
+            startActivity(new Intent(getActivity(), SearchViewAct.class));
+            getActivity().overridePendingTransition(R.anim.slide_up_search, R.anim.fade_out_anim);
+        });
+
+        searchEditText.setOnClickListener(view1 -> {
+            startActivity(new Intent(getActivity(), SearchViewAct.class));
+            getActivity().overridePendingTransition(R.anim.slide_up_search, R.anim.fade_out_anim);
+        });
 
         closeBt = mView.findViewById(R.id.ID_close_bt);
         speachBt = mView.findViewById(R.id.ID_speach_bt);
@@ -182,16 +188,20 @@ public class FrgHome extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String[] permissions = new String[]{
-                        Manifest.permission.RECORD_AUDIO,
-                };
-                if (CheckPermissionHelper.isGranded(getActivity(), permissions)) {
-                    continueOnMicroPh();
-                    speachBt.setVisibility(View.GONE);
-                    closeBt.setVisibility(View.VISIBLE);
-                } else {
-                    requestPermissions(permissions, MY_PERMISSIONS_REQUEST);
-                }
+                Intent intent = new Intent(getActivity(), SearchViewAct.class);
+                intent.putExtra("OpenSpeak", true);
+                startActivity(intent);
+
+//                String[] permissions = new String[]{
+//                        Manifest.permission.RECORD_AUDIO,
+//                };
+//                if (CheckPermissionHelper.isGranded(getActivity(), permissions)) {
+//                    continueOnMicroPh();
+//                    speachBt.setVisibility(View.GONE);
+//                    closeBt.setVisibility(View.VISIBLE);
+//                } else {
+//                    requestPermissions(permissions, MY_PERMISSIONS_REQUEST);
+//                }
             }
         });
 
@@ -204,7 +214,6 @@ public class FrgHome extends Fragment {
             }
         });
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
@@ -270,7 +279,7 @@ public class FrgHome extends Fragment {
                     }
                     if (voiceResults.size() > 0) {
                         searchEditText.setText("" + voiceResults.get(0));
-                        searchEditText.setSelection(voiceResults.get(0).length());
+//                        searchEditText.setSelection(voiceResults.get(0).length());
                         searchEditText.setHint("Where are you going?");
                         closeBt.setVisibility(View.GONE);
                         speachBt.setVisibility(View.VISIBLE);
@@ -342,15 +351,12 @@ public class FrgHome extends Fragment {
         };
         recognizer.setRecognitionListener(listener);
         recognizer.startListening(intent);
-
-
     }
 
 
     public void setDrawerListner(DrawerFrgListner drawerListner) {
         this.mDrawerListner = drawerListner;
     }
-
 
 
 }

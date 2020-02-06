@@ -32,14 +32,7 @@ public class AlineActivityHelper extends RelativeLayout {
         int statusBarHeight = ScreenDiaHelper.getStatusBarHeight(activity);
         setMargins(getContentView(activity), -1 * statusBarHeight);
         if (addStatusBar) {
-            try {
-                View startsBarBg = activity.findViewById(R.id.ID_sts_bg_lay);
-                ViewGroup.LayoutParams layoutParams = startsBarBg.getLayoutParams();
-                layoutParams.height = statusBarHeight;
-                startsBarBg.setLayoutParams(layoutParams);
-            } catch (Exception e) {
-
-            }
+            setStatusBar(activity);
         }
     }
 
@@ -55,5 +48,18 @@ public class AlineActivityHelper extends RelativeLayout {
             v.requestLayout();
         }
     }
+
+    public static void setStatusBar(Activity activity) {
+        try {
+            int statusBarHeight = ScreenDiaHelper.getStatusBarHeight(activity);
+            View startsBarBg = activity.findViewById(R.id.ID_sts_bg_lay);
+            ViewGroup.LayoutParams layoutParams = startsBarBg.getLayoutParams();
+            layoutParams.height = statusBarHeight;
+            startsBarBg.setLayoutParams(layoutParams);
+        } catch (Exception e) {
+
+        }
+    }
+
 
 }

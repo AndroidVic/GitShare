@@ -20,6 +20,8 @@ import com.google.gson.Gson;
 
 import net.promasoft.trawellmate.R;
 import net.promasoft.trawellmate.args.LoginArgs;
+import net.promasoft.trawellmate.args.RegisterArgs;
+import net.promasoft.trawellmate.util.AppManager;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -31,7 +33,7 @@ import java.util.Map;
 
 public class LoginReqsVly {
 
-    final String SERVICE_URL = "https://trawellmate.com/api/v1/users/";
+    final String SERVICE_URL = "http://trawellmate.com/api/v1/users/";
 
     public boolean isNetworkConnected(Context context) {
         boolean connected = false;
@@ -78,7 +80,7 @@ public class LoginReqsVly {
                         if (volleyCallback != null) {
                             volleyCallback.onRequestError(error);
                         }
-                        Log.d("Error.Response", ""+error.getMessage());
+                        Log.d("Error.Response", "" + error.getMessage());
                     }
                 }
         ) {
@@ -102,6 +104,30 @@ public class LoginReqsVly {
         params.put("mobile_number", mobile);
         request(context, "mobile_stat", params, callback);
     }
+
+    public void checkEmailDuplication(Context context, String mobile, VolleyCallback callback) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("email", mobile);
+        request(context, "email_stat", params, callback);
+    }
+
+       public void register(Context context, RegisterArgs details, VolleyCallback callback) {
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("nickname", details.nickname);
+        params.put("country", details.country);
+        params.put("mobile", details.mobile);
+        params.put("email", details.email);
+        params.put("password", details.password);
+        params.put("platform", Build.VERSION.RELEASE);
+        params.put("imei",  AppManager.getIMEI(context));
+        params.put("brand_name",  Build.BRAND);
+        params.put("model_name",  Build.MODEL);
+
+        request(context, "register", params, callback);
+    }
+
+
 
     public interface VolleyCallback {
 

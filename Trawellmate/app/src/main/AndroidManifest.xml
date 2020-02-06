@@ -16,13 +16,43 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".GoThroughAct"></activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MobileValidateAct"
+            android:theme="@style/AppTheme.TransparentWhite">
+
+
+        </activity>
+        <activity android:name=".GoThroughAct" />
         <activity android:name=".HomeAct" />
         <activity android:name=".ContactUsAct" />
         <activity android:name=".DetailsAct" />
         <activity android:name=".DemoEditAct" />
         <activity android:name=".LoginAct" />
-        <activity android:name=".SplashScreenAct" />
+        <activity android:name=".StartPageAct" />
+        <activity android:name=".SearchViewAct"
+            android:theme="@style/AppTheme.TransparentWhite"/>
         <activity
             android:name=".WriteReview"
             android:theme="@style/AppTheme.TransparentWhite" />
@@ -31,7 +61,9 @@
             android:name=".BookingAct"
             android:theme="@style/AppTheme.TransparentWhite" />
         <activity android:name=".YourBookings" />
-        <activity android:name=".VerifyOtp" />
+        <activity
+            android:name=".VerifyOtp"
+            android:theme="@style/AppTheme.TransparentWhite" />
         <activity android:name=".UserAccountAct" />
         <activity android:name=".FaqAct" />
         <activity android:name=".ForgotPAsswordAct" />
@@ -42,14 +74,17 @@
         <activity android:name=".AboutUsAct" />
         <activity android:name=".UserProfileAct" />
         <activity android:name=".MainActivity" /> <!-- android:theme="@style/AppTheme.Translucent" -->
-        <activity android:name=".SignupActivity" /> <!-- android:theme="@style/AppTheme.Translucent" -->
-        <activity android:name=".StartPageAct">
+        <activity
+            android:name=".SignupActivity"
+            android:theme="@style/AppTheme.TransparentWhite" /> <!-- android:theme="@style/AppTheme.Translucent" -->
+        <activity android:name=".SplashScreenAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
     </application>
 
 </manifest>

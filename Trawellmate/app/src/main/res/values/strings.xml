@@ -9,7 +9,7 @@
     <string name="verify">Verify</string>
     <string name="already_hv_act">Already have an account?</string>
     <string name="sign_in">Sign in</string>
-    <string name="otp_msg">Please enter the verification code</string>
+    <string name="otp_msg">Please enter the verification code send to</string>
 
 
     <string-array name="gender_list">
@@ -44,6 +44,10 @@
     <string name="strike_text"><strike>₹ 85,000</strike></string>
 
     <string name="app_per_check">Please check your app permission in settings</string>
+
+    <string name="facebook_app_id">500248123937164</string>
+    <string name="fb_login_protocol_scheme">fb500248123937164</string>
+
 
 
 </resources>

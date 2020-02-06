@@ -16,38 +16,41 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.mukesh.OnOtpCompletionListener;
-import com.mukesh.OtpView;
-
 import net.promasoft.trawellmate.ForgotPAsswordAct;
 import net.promasoft.trawellmate.HomeAct;
 import net.promasoft.trawellmate.R;
 import net.promasoft.trawellmate.SignupActivity;
+import net.promasoft.trawellmate.db.SharedPrefHelper;
 import net.promasoft.trawellmate.dsgn.CustomTextLink;
 
 
 public class DialogLogin extends RelativeLayout {
 
+    private OnLoginListner mLoginListner;
     private Activity mContext;
-    private ViewGroup mRoot;
-    private View mChild;
-    private Snackbar snackbar;
-    private OtpView otpView;
-    EditText otp_1, otp_2, otp_3, otp_4;
-    int pin1, pin2, pin3, pin4;
-    private Button validateButton;
-    private Button cancelButton;
+    private static ViewGroup mRoot;
+    public static View mChild;
+    private EditText mUserPassword, mUserName;
 
-    public DialogLogin(Activity activity) {
+
+    public DialogLogin(Activity activity, boolean overlayNeeded, OnLoginListner loginListner) {
         super(activity);
+        this.mLoginListner = loginListner;
         mContext = activity;
+        if (mChild != null) {
+            if (mRoot != null) {
+                closePage();
+            }
+        }
+
         mRoot = (ViewGroup) getContentView(activity);
         LayoutInflater mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mChild = mInflater.inflate(R.layout.dialog_login, this, true);
         LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         lp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
 
+        RelativeLayout overLay = mChild.findViewById(R.id.ID_login_overlay);
+        overLay.setVisibility(overlayNeeded ? VISIBLE : GONE);
 
         CardView loginClose = findViewById(R.id.ID_hm_login_close);
         loginClose.setOnClickListener(view -> {
@@ -63,7 +66,16 @@ public class DialogLogin extends RelativeLayout {
 
         loginPageHome.setVisibility(View.VISIBLE);
         loginPageHome.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_up));
-        initLogin();
+        initAnim();
+        initLayout();
+    }
+
+    private void initLayout() {
+
+        mUserName = findViewById(R.id.ID_login_username);
+        mUserPassword = findViewById(R.id.ID_login_password);
+
+
     }
 
 
@@ -97,7 +109,7 @@ public class DialogLogin extends RelativeLayout {
     private CardView loginCard;
     private RelativeLayout loginPageHome;
 
-    private void initLogin() {
+    private void initAnim() {
 
 
         final CardView usernameCard = findViewById(R.id.IDa_username);
@@ -123,22 +135,46 @@ public class DialogLogin extends RelativeLayout {
         loginBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginPageHome.setVisibility(View.GONE);
-                loginPageHome.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_down));
-                loginCard.setVisibility(View.GONE);
-                loginCard.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_down));
+
+                validateUser();
+//                loginPageHome.setVisibility(View.GONE);
+//                loginPageHome.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_down));
+//                loginCard.setVisibility(View.GONE);
+//                loginCard.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_down));
             }
         });
 
         CustomTextLink signUpText = findViewById(R.id.ID_signup_text);
         signUpText.setOnClickListener(view -> {
-            mContext.startActivity(new Intent(mContext, SignupActivity.class));
+            if (mLoginListner != null) {
+                mLoginListner.onSignUpClicked();
+            }
         });
 
         CustomTextLink frgtPassEmailSubmit = findViewById(R.id.ID_login_forget_pass);
         frgtPassEmailSubmit.setOnClickListener(view -> {
             mContext.startActivity(new Intent(mContext, ForgotPAsswordAct.class));
         });
+
+    }
+
+    private void validateUser() {
+        String userName = mUserName.getText().toString().trim();
+        String userpass = mUserPassword.getText().toString().trim();
+        if (userName.isEmpty()) {
+            new ToastHelper(mContext, "Enter Username").setDuration(1000).show();
+        } else if (userpass.isEmpty()) {
+            new ToastHelper(mContext, "Enter Password").setDuration(1000).show();
+        } else {
+            if (userName.toLowerCase().equals("john") && userpass.toLowerCase().equals("123")) {
+                if (mLoginListner != null) {
+                    mLoginListner.onLoginSuccess();
+                }
+
+            } else {
+                new ToastHelper(mContext, "Invalid Credentials").setDuration(1000).show();
+            }
+        }
 
     }
 
@@ -160,6 +196,12 @@ public class DialogLogin extends RelativeLayout {
 //                anim.start();
             }
         }, delay);
+    }
+
+    public interface OnLoginListner {
+        void onLoginSuccess();
+
+        void onSignUpClicked();
     }
 
 }

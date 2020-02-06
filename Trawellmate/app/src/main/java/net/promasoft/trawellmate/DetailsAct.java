@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import com.google.android.material.appbar.AppBarLayout;
 
 import net.promasoft.trawellmate.adp.AdpDaWiseDetails;
-import net.promasoft.trawellmate.arg.DataDayWise;
+import net.promasoft.trawellmate.argapp.DataDayWise;
 import net.promasoft.trawellmate.dsgn.CustomTextLink;
 import net.promasoft.trawellmate.util.AlineActivityHelper;
 import net.promasoft.trawellmate.util.DelayHelper;

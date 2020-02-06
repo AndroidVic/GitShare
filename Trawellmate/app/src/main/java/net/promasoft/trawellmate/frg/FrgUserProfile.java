@@ -5,11 +5,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.squareup.picasso.Picasso;
+
 import net.promasoft.trawellmate.R;
+import net.promasoft.trawellmate.argapp.UserDetailsArg;
+import net.promasoft.trawellmate.db.SharedPrefHelper;
+import net.promasoft.trawellmate.db.UserPrefHelper;
+import net.promasoft.trawellmate.dsgn.CircleImageView;
 import net.promasoft.trawellmate.util.DrawerFrgListner;
 
 public class FrgUserProfile extends Fragment {
@@ -36,8 +44,33 @@ public class FrgUserProfile extends Fragment {
         menuBar.setOnClickListener(view1 -> {
             mDrawerListner.onDrawerClicked();
         });
-
+        initViews();
         return view;
+    }
+
+    private void initViews() {
+        CircleImageView userImg = view.findViewById(R.id.ID_profile_img);
+        TextView userNickName = view.findViewById(R.id.ID_profile_nickname);
+        EditText userFirstName = view.findViewById(R.id.ID_profile_fname);
+        EditText userLastName = view.findViewById(R.id.ID_profile_lname);
+        EditText userMobile = view.findViewById(R.id.ID_profile_mobile);
+        EditText userEmail = view.findViewById(R.id.ID_profile_email);
+
+        if (SharedPrefHelper.getInstance(getActivity()).getIsLogin()) {
+            UserDetailsArg userData = UserPrefHelper.getInstance(getActivity()).getUserData();
+            if (userData != null) {
+                userNickName.setText("" + userData.userFullName);
+                userFirstName.setText("" + userData.userFirstName);
+                userLastName.setText("" + userData.userLastName);
+                userEmail.setText("" + userData.userEmail);
+                userMobile.setText("" + userData.userMobile);
+                if (!userData.userPhotUri.isEmpty()) {
+                    Picasso.with(getActivity()).load(userData.userPhotUri).placeholder(R.drawable.ic_user_img_default).into(userImg);
+                }
+            }
+
+        }
+
     }
 
     public void setDrawerListner(DrawerFrgListner drawerListner) {

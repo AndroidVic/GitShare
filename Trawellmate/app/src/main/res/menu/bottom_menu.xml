@@ -3,22 +3,32 @@
 
     <item
         android:id="@+id/ID_nav_explore"
-        android:icon="@drawable/ic_search1"
+        android:icon="@drawable/ic_home"
         android:title="Explore" />
 
     <item
         android:id="@+id/ID_nav_saved"
-        android:icon="@drawable/ic_saved"
+        android:icon="@drawable/ic_favorite_black"
         android:title="Favourite" />
+
+    <item
+        android:id="@+id/ID_nav_account"
+        android:icon="@color/colorWhite"
+        android:title="" />
 
     <item
         android:id="@+id/ID_nav_booking"
         android:icon="@drawable/ic_booking1"
-        android:title="Booking" />
+        android:title="My Trips" />
 
     <item
-        android:id="@+id/ID_nav_account"
-        android:icon="@drawable/ic_account_circle"
-        android:title="Account" />
+        android:id="@+id/ID_nav_cart"
+        android:icon="@drawable/ic_shopping_cart"
+        android:title="Cart" />
+
+    <!--    <item-->
+    <!--        android:id="@+id/ID_nav_account"-->
+    <!--        android:icon="@drawable/ic_account_circle"-->
+    <!--        android:title="Account" />-->
 
 </menu>

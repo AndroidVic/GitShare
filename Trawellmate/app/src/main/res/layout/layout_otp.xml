@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/Loading_Container"
     android:layout_width="match_parent"
@@ -14,11 +13,12 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
         android:orientation="vertical">
+
         <ImageView
             android:layout_width="250dp"
             android:layout_height="180dp"
             android:layout_gravity="center"
-            android:src="@drawable/otp_img"/>
+            android:src="@drawable/otp_img" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,42 +31,52 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
-            android:padding="20dp"
+            android:padding="5dp"
             android:text="@string/otp_msg"
+            android:textSize="@dimen/text_size_medium" />
+
+        <TextView
+            android:id="@+id/ID_ver_otp_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="9876543210"
             android:textSize="@dimen/text_size_medium" />
 
         <com.mukesh.OtpView
             android:id="@+id/otp_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="25dp"
             android:inputType="number"
             android:itemBackground="#C5C3C3"
             android:textColor="@color/text_color_black"
-            app:itemCount="4"
             app:cursorColor="@color/colorPrimary"
-            android:layout_gravity="center"
+            app:itemCount="4"
             app:lineColor="#C5C3C3"
-            app:viewType="line"
-            />
-            <Button
-                android:id="@+id/validate_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/btn_gradient_style"
-                android:text="Validate"
-                android:layout_gravity="center"
-                android:textColor="@color/text_color_white" />
+            app:viewType="line" />
+
+        <Button
+            android:id="@+id/validate_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/btn_gradient_style"
+            android:text="Validate"
+            android:textColor="@color/text_color_white" />
+
         <TextView
+            android:id="@+id/cancel_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel"
-            android:id="@+id/cancel_btn"
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_gravity="center"/>
+            android:text="Cancel" />
 
     </LinearLayout>
 
@@ -79,16 +89,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           android:layout_gravity="center"
+            android:layout_gravity="center"
 
             android:text="Didn't recieve otp?" />
 
         <TextView
-            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Resend code"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:text="Resend code"
             android:textColor="#2196F3" />
     </LinearLayout>
 </RelativeLayout>

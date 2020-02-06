@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.PathInterpolator;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.FloatRange;
 import androidx.annotation.Nullable;
@@ -30,7 +31,7 @@ public class CheckView extends View {
     private static final long CHECK_ANIM_DURATION = 500L;
     private static final long SCALE_ANIM_DELAY = 180L;
     private static final long SCALE_ANIM_DURATION = 850L;
-    private static final float DEFAULT_STROKE_WIDTH = 8F;
+    private static final float DEFAULT_STROKE_WIDTH = 2.3F;
     private static final int DEFAULT_STROKE_COLOR = 0xFF1AAB00; // greenish
     private static final float SCALE_MIN = 0.80F;
 

@@ -1,4 +1,4 @@
-package net.promasoft.trawellmate.arg;
+package net.promasoft.trawellmate.argapp;
 
 
 public class DataDayWise {

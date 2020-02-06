@@ -128,7 +128,7 @@
                     android:id="@+id/ID_nav_account"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ripple_effect_transparant"
+                    android:layout_marginStart="5dp"
                     android:orientation="horizontal"
                     android:paddingVertical="10dp">
 
@@ -155,7 +155,7 @@
                     android:id="@+id/ID_nav_booking"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ripple_effect_transparant"
+                    android:layout_marginStart="5dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -182,7 +182,7 @@
                     android:id="@+id/ID_nav_transaction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ripple_effect_transparant"
+                    android:layout_marginStart="5dp"
                     android:orientation="horizontal"
                     android:paddingVertical="10dp">
 
@@ -209,7 +209,7 @@
                     android:id="@+id/ID_nav_change_pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ripple_effect_transparant"
+                    android:layout_marginStart="5dp"
                     android:orientation="horizontal"
                     android:paddingVertical="10dp">
 
@@ -236,7 +236,7 @@
                     android:id="@+id/ID_nav_claim_refund"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ripple_effect_transparant"
+                    android:layout_marginStart="5dp"
                     android:orientation="horizontal"
                     android:paddingVertical="10dp">
 
@@ -263,7 +263,7 @@
                     android:id="@+id/ID_nav_notification"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ripple_effect_transparant"
+                    android:layout_marginStart="5dp"
                     android:orientation="horizontal"
                     android:paddingVertical="10dp">
 
@@ -290,7 +290,7 @@
                     android:id="@+id/ID_nav_faq"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ripple_effect_transparant"
+                    android:layout_marginStart="5dp"
                     android:orientation="horizontal"
                     android:paddingVertical="10dp">
 
@@ -317,7 +317,7 @@
                     android:id="@+id/ID_nav_contact_us"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ripple_effect_transparant"
+                    android:layout_marginStart="5dp"
                     android:orientation="horizontal"
                     android:paddingVertical="10dp">
 
@@ -344,7 +344,7 @@
                     android:id="@+id/ID_nav_privacy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ripple_effect_transparant"
+                    android:layout_marginStart="5dp"
                     android:orientation="horizontal"
                     android:paddingVertical="10dp">
 
@@ -371,7 +371,7 @@
                     android:id="@+id/ID_nav_aboutus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ripple_effect_transparant"
+                    android:layout_marginStart="5dp"
                     android:orientation="horizontal"
                     android:paddingVertical="10dp">
 
@@ -398,7 +398,7 @@
                     android:id="@+id/ID_nav_logout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ripple_effect_transparant"
+                    android:layout_marginStart="5dp"
                     android:orientation="horizontal"
                     android:paddingVertical="10dp">
 

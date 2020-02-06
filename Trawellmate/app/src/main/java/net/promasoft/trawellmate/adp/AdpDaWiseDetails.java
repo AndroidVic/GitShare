@@ -5,8 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,7 +16,7 @@ import com.github.vipulasri.timelineview.TimelineView;
 
 
 import net.promasoft.trawellmate.R;
-import net.promasoft.trawellmate.arg.DataDayWise;
+import net.promasoft.trawellmate.argapp.DataDayWise;
 import net.promasoft.trawellmate.util.DiamensionManager;
 import net.promasoft.trawellmate.util.ViewECAnimator;
 
@@ -46,7 +44,6 @@ public class AdpDaWiseDetails extends RecyclerView.Adapter<AdpDaWiseDetails.Time
     public void onBindViewHolder(final TimeLineViewHolder holder, int position) {
 
         DataDayWise item = items.get(position);
-
 
         holder.mdwTitle.setText(item.mTitle);
         holder.mdwDesc.setText(item.mDescription);

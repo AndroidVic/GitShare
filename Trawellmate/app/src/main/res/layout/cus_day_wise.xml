@@ -52,7 +52,6 @@
                     android:id="@+id/ID_dw_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_san_script"
                     android:text="Title"
                     android:textColor="@color/text_color_black"
                     android:textSize="@dimen/text_size_medium" />
@@ -74,8 +73,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/open_san_semibold_script"
                 android:text="Description"
+                android:lineSpacingExtra="5dp"
                 android:textSize="@dimen/text_size_small" />
 
 

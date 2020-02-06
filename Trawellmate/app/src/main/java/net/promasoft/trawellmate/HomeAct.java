@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -27,16 +28,24 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
+import net.promasoft.trawellmate.db.SharedPrefHelper;
+import net.promasoft.trawellmate.db.UserPrefHelper;
 import net.promasoft.trawellmate.dsgn.CustomTextLink;
 import net.promasoft.trawellmate.frg.FrgBooking;
+import net.promasoft.trawellmate.frg.FrgCart;
 import net.promasoft.trawellmate.frg.FrgHome;
+import net.promasoft.trawellmate.frg.FrgPromptLogin;
 import net.promasoft.trawellmate.frg.FrgSaved;
+import net.promasoft.trawellmate.frg.FrgUserAccount;
 import net.promasoft.trawellmate.frg.FrgUserProfile;
 import net.promasoft.trawellmate.util.AlertMsgDialog;
 import net.promasoft.trawellmate.util.AlineActivityHelper;
 import net.promasoft.trawellmate.util.AnimHelper;
+import net.promasoft.trawellmate.util.DelayHelper;
+import net.promasoft.trawellmate.util.DialogAdder;
 import net.promasoft.trawellmate.util.DialogLogin;
 import net.promasoft.trawellmate.util.DrawerFrgListner;
+import net.promasoft.trawellmate.util.ToastHelper;
 
 public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
 
@@ -45,6 +54,8 @@ public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
     private DrawerLayout mainDrawerLay;
     private NavigationView mNavigationView;
     private LinearLayout bottom_menu_lay;
+    private DialogLogin dialogLogin;
+    private CardView loginCircleBt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,33 +68,150 @@ public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
         FrgHome frgHome = FrgHome.newInstance(HomeAct.this);
         getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgHome).commit();
         FrgBooking frgBooking = FrgBooking.newInstance(HomeAct.this);
+        FrgCart frgCart = FrgCart.newInstance(HomeAct.this);
         FrgSaved frgSaved = FrgSaved.newInstance(HomeAct.this);
         FrgUserProfile frgUserProfile = FrgUserProfile.newInstance(HomeAct.this);
+        FrgUserAccount frgUserAcc = FrgUserAccount.newInstance(HomeAct.this);
 
         frgHome.setDrawerListner(HomeAct.this);
         frgBooking.setDrawerListner(HomeAct.this);
         frgSaved.setDrawerListner(HomeAct.this);
         frgUserProfile.setDrawerListner(HomeAct.this);
+        frgCart.setDrawerListner(HomeAct.this);
 
         bottomNavigationMenu = findViewById(R.id.ID_bottom_navigation);
         bottomNavigationMenu.setOnNavigationItemSelectedListener(menuItem -> {
             int id = menuItem.getItemId();
             if (id == R.id.ID_nav_account) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgUserProfile).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgUserAcc).commit();
             }
             if (id == R.id.ID_nav_booking) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgBooking).commit();
+                if (SharedPrefHelper.getInstance(HomeAct.this).getIsLogin()) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgBooking).commit();
+                } else {
+                    FrgPromptLogin frgPromptLogin = FrgPromptLogin.newInstance(HomeAct.this, "My Trips", "Log in to check your packages", () -> {
+                        dialogLogin = new DialogLogin(HomeAct.this,false, new DialogLogin.OnLoginListner() {
+                            @Override
+                            public void onLoginSuccess() {
+                                loginCircleBt.setVisibility(View.GONE);
+                                bottomNavigationMenu.getMenu().removeItem(R.id.ID_nav_account);
+                                bottomNavigationMenu.getMenu().add(Menu.NONE, R.id.ID_nav_account, Menu.NONE, "Account").setIcon(R.drawable.ic_account_circle);
+
+                                dialogLogin.closePage();
+                                new ToastHelper(HomeAct.this, "Welcome John").setDuration(1000).show();
+                                SharedPrefHelper.getInstance(HomeAct.this).setIsLogin(true);
+                                getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgHome).commit();
+
+                            }
+
+                            @Override
+                            public void onSignUpClicked() {
+                                startActivity(new Intent(HomeAct.this, SignupActivity.class));
+
+                            }
+                        });
+                        dialogLogin.showPage();
+                    });
+                    getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgPromptLogin).commit();
+                }
             }
             if (id == R.id.ID_nav_explore) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgHome).commit();
             }
             if (id == R.id.ID_nav_saved) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgSaved).commit();
+                if (SharedPrefHelper.getInstance(HomeAct.this).getIsLogin()) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgSaved).commit();
+                } else {
+                    FrgPromptLogin frgPromptLogin = FrgPromptLogin.newInstance(HomeAct.this, "My Favourite", "Log in to check your packages", () -> {
+                        dialogLogin = new DialogLogin(HomeAct.this,false, new DialogLogin.OnLoginListner() {
+                            @Override
+                            public void onLoginSuccess() {
+                                loginCircleBt.setVisibility(View.GONE);
+                                bottomNavigationMenu.getMenu().removeItem(R.id.ID_nav_account);
+                                bottomNavigationMenu.getMenu().add(Menu.NONE, R.id.ID_nav_account, Menu.NONE, "Account").setIcon(R.drawable.ic_account_circle);
 
+                                dialogLogin.closePage();
+                                new ToastHelper(HomeAct.this, "Welcome John").setDuration(1000).show();
+                                SharedPrefHelper.getInstance(HomeAct.this).setIsLogin(true);
+                                getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgHome).commit();
+                            }
+
+                            @Override
+                            public void onSignUpClicked() {
+                                startActivity(new Intent(HomeAct.this, SignupActivity.class));
+
+                            }
+                        });
+                        dialogLogin.showPage();
+                    });
+                    getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgPromptLogin).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgPromptLogin).commit();
+                }
+            }
+            if (id == R.id.ID_nav_cart) {
+                if (SharedPrefHelper.getInstance(HomeAct.this).getIsLogin()) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgCart).commit();
+                } else {
+                    FrgPromptLogin frgPromptLogin = FrgPromptLogin.newInstance(HomeAct.this, "My Cart", "Log in to check orders", () -> {
+                        dialogLogin = new DialogLogin(HomeAct.this, false,new DialogLogin.OnLoginListner() {
+                            @Override
+                            public void onLoginSuccess() {
+                                loginCircleBt.setVisibility(View.GONE);
+                                bottomNavigationMenu.getMenu().removeItem(R.id.ID_nav_account);
+                                bottomNavigationMenu.getMenu().add(Menu.NONE, R.id.ID_nav_account, Menu.NONE, "Account").setIcon(R.drawable.ic_account_circle);
+
+                                dialogLogin.closePage();
+                                new ToastHelper(HomeAct.this, "Welcome John").setDuration(1000).show();
+                                SharedPrefHelper.getInstance(HomeAct.this).setIsLogin(true);
+                                getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgHome).commit();
+                            }
+
+                            @Override
+                            public void onSignUpClicked() {
+                                startActivity(new Intent(HomeAct.this, SignupActivity.class));
+
+                            }
+                        });
+                        dialogLogin.showPage();
+                    });
+                    getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgPromptLogin).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgPromptLogin).commit();
+                }
             }
             return true;
         });
 
+        loginCircleBt = findViewById(R.id.ID_hm_addons_login);
+
+        if (SharedPrefHelper.getInstance(HomeAct.this).getIsLogin()) {
+            loginCircleBt.setVisibility(View.GONE);
+            bottomNavigationMenu.getMenu().removeItem(R.id.ID_nav_account);
+            bottomNavigationMenu.getMenu().add(Menu.NONE, R.id.ID_nav_account, Menu.NONE, "Account").setIcon(R.drawable.ic_account_circle);
+
+        }
+
+        loginCircleBt.setOnClickListener(view -> {
+            dialogLogin = new DialogLogin(HomeAct.this,false, new DialogLogin.OnLoginListner() {
+                @Override
+                public void onLoginSuccess() {
+                    loginCircleBt.setVisibility(View.GONE);
+                    bottomNavigationMenu.getMenu().removeItem(R.id.ID_nav_account);
+                    bottomNavigationMenu.getMenu().add(Menu.NONE, R.id.ID_nav_account, Menu.NONE, "Account").setIcon(R.drawable.ic_account_circle);
+
+                    dialogLogin.closePage();
+                    new ToastHelper(HomeAct.this, "Welcome John").setDuration(1000).show();
+                    SharedPrefHelper.getInstance(HomeAct.this).setIsLogin(true);
+                }
+
+                @Override
+                public void onSignUpClicked() {
+                    startActivity(new Intent(HomeAct.this, SignupActivity.class));
+
+                }
+            });
+            dialogLogin.showPage();
+//
+        });
 
     }
 
@@ -146,6 +274,7 @@ public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
                         new AlertMsgDialog(HomeAct.this, AlertMsgDialog.DIA_LOGOUT, "Logout", "Are you sure to exit", "exit", new AlertMsgDialog.ActionListner() {
                             @Override
                             public void onPositive() {
+                                SharedPrefHelper.getInstance(HomeAct.this).setIsLogin(false);
                                 finish();
                             }
 
