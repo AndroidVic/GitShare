@@ -8,9 +8,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,10 +26,27 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
+import net.promasoft.trawellmate.argapp.UserDetailsArg;
 import net.promasoft.trawellmate.db.SharedPrefHelper;
 import net.promasoft.trawellmate.db.UserPrefHelper;
 import net.promasoft.trawellmate.dsgn.CustomTextLink;
@@ -41,11 +60,19 @@ import net.promasoft.trawellmate.frg.FrgUserProfile;
 import net.promasoft.trawellmate.util.AlertMsgDialog;
 import net.promasoft.trawellmate.util.AlineActivityHelper;
 import net.promasoft.trawellmate.util.AnimHelper;
+import net.promasoft.trawellmate.util.AppConstant;
 import net.promasoft.trawellmate.util.DelayHelper;
 import net.promasoft.trawellmate.util.DialogAdder;
 import net.promasoft.trawellmate.util.DialogLogin;
 import net.promasoft.trawellmate.util.DrawerFrgListner;
 import net.promasoft.trawellmate.util.ToastHelper;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Arrays;
 
 public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
 
@@ -56,6 +83,10 @@ public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
     private LinearLayout bottom_menu_lay;
     private DialogLogin dialogLogin;
     private CardView loginCircleBt;
+
+
+    private GoogleSignInClient mGoogleSignInClient;
+    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +121,7 @@ public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
                     getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgBooking).commit();
                 } else {
                     FrgPromptLogin frgPromptLogin = FrgPromptLogin.newInstance(HomeAct.this, "My Trips", "Log in to check your packages", () -> {
-                        dialogLogin = new DialogLogin(HomeAct.this,false, new DialogLogin.OnLoginListner() {
+                        dialogLogin = new DialogLogin(HomeAct.this, false, new DialogLogin.OnLoginListner() {
                             @Override
                             public void onLoginSuccess() {
                                 loginCircleBt.setVisibility(View.GONE);
@@ -108,6 +139,16 @@ public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
                             public void onSignUpClicked() {
                                 startActivity(new Intent(HomeAct.this, SignupActivity.class));
 
+                            }
+
+                            @Override
+                            public void onGoogleClicked() {
+                                signIn();
+                            }
+
+                            @Override
+                            public void onFacebokClicked() {
+                                fbLogin();
                             }
                         });
                         dialogLogin.showPage();
@@ -123,7 +164,7 @@ public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
                     getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgSaved).commit();
                 } else {
                     FrgPromptLogin frgPromptLogin = FrgPromptLogin.newInstance(HomeAct.this, "My Favourite", "Log in to check your packages", () -> {
-                        dialogLogin = new DialogLogin(HomeAct.this,false, new DialogLogin.OnLoginListner() {
+                        dialogLogin = new DialogLogin(HomeAct.this, false, new DialogLogin.OnLoginListner() {
                             @Override
                             public void onLoginSuccess() {
                                 loginCircleBt.setVisibility(View.GONE);
@@ -140,6 +181,17 @@ public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
                             public void onSignUpClicked() {
                                 startActivity(new Intent(HomeAct.this, SignupActivity.class));
 
+                            }
+
+                            @Override
+                            public void onGoogleClicked() {
+                                signIn();
+
+                            }
+
+                            @Override
+                            public void onFacebokClicked() {
+                                fbLogin();
                             }
                         });
                         dialogLogin.showPage();
@@ -153,7 +205,7 @@ public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
                     getSupportFragmentManager().beginTransaction().replace(R.id.hm_base_container, frgCart).commit();
                 } else {
                     FrgPromptLogin frgPromptLogin = FrgPromptLogin.newInstance(HomeAct.this, "My Cart", "Log in to check orders", () -> {
-                        dialogLogin = new DialogLogin(HomeAct.this, false,new DialogLogin.OnLoginListner() {
+                        dialogLogin = new DialogLogin(HomeAct.this, false, new DialogLogin.OnLoginListner() {
                             @Override
                             public void onLoginSuccess() {
                                 loginCircleBt.setVisibility(View.GONE);
@@ -169,6 +221,18 @@ public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
                             @Override
                             public void onSignUpClicked() {
                                 startActivity(new Intent(HomeAct.this, SignupActivity.class));
+
+                            }
+
+                            @Override
+                            public void onGoogleClicked() {
+                                signIn();
+
+                            }
+
+                            @Override
+                            public void onFacebokClicked() {
+                                fbLogin();
 
                             }
                         });
@@ -191,7 +255,7 @@ public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
         }
 
         loginCircleBt.setOnClickListener(view -> {
-            dialogLogin = new DialogLogin(HomeAct.this,false, new DialogLogin.OnLoginListner() {
+            dialogLogin = new DialogLogin(HomeAct.this, false, new DialogLogin.OnLoginListner() {
                 @Override
                 public void onLoginSuccess() {
                     loginCircleBt.setVisibility(View.GONE);
@@ -208,11 +272,25 @@ public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
                     startActivity(new Intent(HomeAct.this, SignupActivity.class));
 
                 }
+
+                @Override
+                public void onGoogleClicked() {
+                    signIn();
+                }
+
+                @Override
+                public void onFacebokClicked() {
+                    fbLogin();
+                }
             });
             dialogLogin.showPage();
 //
         });
 
+        initAuthGoogle();
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(getApplication());
     }
 
 
@@ -365,5 +443,203 @@ public class HomeAct extends AppCompatActivity implements DrawerFrgListner {
             mainDrawerLay.openDrawer(GravityCompat.START);
         }
 
+    }
+
+    private void signIn() {
+        mGoogleSignInClient.signOut();
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    private void fbLogin() {
+        //callbackManager = CallbackManager.Factory.create();
+
+        callbackManager = CallbackManager.Factory.create();
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if (accessToken != null) {
+            handleFacebookToken(accessToken);
+//            LoginManager.getInstance().logOut();
+        } else {
+
+            LoginManager.getInstance().registerCallback(callbackManager,
+                    new FacebookCallback<LoginResult>() {
+                        @Override
+                        public void onSuccess(LoginResult loginResult) {
+                            handleFacebookToken(loginResult.getAccessToken());
+                        }
+
+                        @Override
+                        public void onCancel() {
+                            Toast.makeText(HomeAct.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onError(FacebookException exception) {
+                            Toast.makeText(HomeAct.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"));
+        }
+//        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email",  "user_birthday", "user_location"));
+    }
+
+    private void handleFacebookToken(AccessToken accessToken) {
+
+//        Profile profile = Profile.getCurrentProfile();
+//        if (profile != null) {
+//            String f_name = profile.getFirstName();
+//            String m_name = profile.getMiddleName();
+//            String l_name = profile.getLastName();
+//            String fullName = profile.getName();
+//            String fb_image = profile.getProfilePictureUri(100, 100).toString();
+//        } else {
+        GraphRequest request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
+
+            @Override
+            public void onCompleted(JSONObject object, GraphResponse response) {
+                try {
+                    UserDetailsArg userDetailsArg = new UserDetailsArg();
+                    String id = object.getString("id");
+                    try {
+                        URL profile_pic = new URL("https://graph.facebook.com/" + id + "/picture?width=200&height=150");
+                        userDetailsArg.userPhotUri = profile_pic.toString();
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+
+                    if (object.has("name"))
+                        userDetailsArg.userFullName = object.getString("name");
+                    if (object.has("first_name"))
+                        userDetailsArg.userFirstName = object.getString("first_name");
+                    if (object.has("middle_name"))
+                        userDetailsArg.userMiddleName = object.getString("middle_name");
+                    if (object.has("last_name"))
+                        userDetailsArg.userLastName = object.getString("last_name");
+                    if (object.has("email"))
+                        userDetailsArg.userEmail = object.getString("email");
+                    if (object.has("gender"))
+                        userDetailsArg.userGender = object.getString("gender");
+                    if (object.has("birthday"))
+                        userDetailsArg.userDOB = object.getString("birthday");
+                    if (object.has("location"))
+                        userDetailsArg.userLocation = object.getJSONObject("location").getString("name");
+
+                    LoginManager.getInstance().logOut();
+
+                    UserPrefHelper.getInstance(HomeAct.this).setUserData(userDetailsArg);
+
+                    Intent intent = new Intent(HomeAct.this, MobileValidateAct.class);
+                    intent.putExtra("name", userDetailsArg.userFirstName);
+                    startActivity(intent);
+
+
+                } catch (JSONException e) {
+//                    Toast.makeText(StartPageAct.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id, link, name, first_name, middle_name, last_name, email, gender, birthday, location"); // Parámetros que pedimos a facebook
+        request.setParameters(parameters);
+        request.executeAsync();
+//        }
+    }
+
+    private static final int RC_SIGN_IN = 00001;
+
+    private void initAuthGoogle() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestProfile()
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+//        updateUI(account);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        } else {
+            callbackManager.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+
+            // Signed in successfully, show authenticated UI.
+            updateUI(account);
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.w("StartPage", "signInResult:failed code=" + e.getStatusCode());
+
+        }
+    }
+
+    private void updateUI(GoogleSignInAccount account) {
+//        Toast.makeText(this, "Name: " + account.getDisplayName(), Toast.LENGTH_SHORT).show();
+        UserDetailsArg userDetailsArg = new UserDetailsArg();
+        userDetailsArg.userFullName = account.getDisplayName();
+        userDetailsArg.userFirstName = account.getGivenName();
+        userDetailsArg.userLastName = account.getFamilyName();
+        userDetailsArg.userEmail = account.getEmail();
+        Uri photoUrl = account.getPhotoUrl();
+        if (photoUrl != null) {
+            try {
+                userDetailsArg.userPhotUri = photoUrl.toString();
+            } catch (Exception e) {
+
+            }
+        }
+
+        UserPrefHelper.getInstance(HomeAct.this).setUserData(userDetailsArg);
+
+        Intent intent = new Intent(HomeAct.this, MobileValidateAct.class);
+        intent.putExtra("name", userDetailsArg.userFirstName);
+        startActivity(intent);
+
+
+//        Log.d("StartPage", "Account: " + account);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (SharedPrefHelper.getInstance(HomeAct.this).getIsLogin()) {
+            try {
+                if (dialogLogin != null) {
+                    dialogLogin.closePage();
+                }
+            } catch (Exception e) {
+
+            }
+            if (loginCircleBt.getVisibility() == View.VISIBLE) {
+                loginCircleBt.setVisibility(View.GONE);
+                bottomNavigationMenu.getMenu().removeItem(R.id.ID_nav_account);
+                bottomNavigationMenu.getMenu().add(Menu.NONE, R.id.ID_nav_account, Menu.NONE, "Account").setIcon(R.drawable.ic_account_circle);
+            }
+
+            try {
+                if (!AppConstant.WELCOME_SHOWN) {
+                    AppConstant.WELCOME_SHOWN = true;
+                    String name = UserPrefHelper.getInstance(HomeAct.this).getUserData().userFirstName;
+                    new ToastHelper(HomeAct.this, "Welcome " + name).setDuration(1000).show();
+                }
+            } catch (Exception e) {
+
+            }
+        }
     }
 }

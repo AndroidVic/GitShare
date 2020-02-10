@@ -19,6 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.android.volley.VolleyError;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -35,12 +36,20 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.gson.Gson;
 
+import net.promasoft.trawellmate.argapp.UserConstantResult;
 import net.promasoft.trawellmate.argapp.UserDetailsArg;
+import net.promasoft.trawellmate.args.RegisterArgs;
+import net.promasoft.trawellmate.args.RegisterResult;
 import net.promasoft.trawellmate.db.SharedPrefHelper;
 import net.promasoft.trawellmate.db.UserPrefHelper;
+import net.promasoft.trawellmate.ntwk.LoginReqsVly;
+import net.promasoft.trawellmate.util.AlertMsgDialog;
 import net.promasoft.trawellmate.util.AlineActivityHelper;
+import net.promasoft.trawellmate.util.AppConstant;
 import net.promasoft.trawellmate.util.DialogLogin;
+import net.promasoft.trawellmate.util.LoadingScreen;
 import net.promasoft.trawellmate.util.ToastHelper;
 
 import org.json.JSONException;
@@ -58,6 +67,7 @@ public class StartPageAct extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private DialogLogin dialogLogin;
     private CallbackManager callbackManager;
+    private LoadingScreen loadingScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +76,7 @@ public class StartPageAct extends AppCompatActivity {
         new AlineActivityHelper(StartPageAct.this, false);
 
         SharedPrefHelper.getInstance(StartPageAct.this).setIsFirstTime(false);
+        loadingScreen = new LoadingScreen(StartPageAct.this);
 
         ImageView bgImg = findViewById(R.id.Ida_start_bg);
 
@@ -84,6 +95,18 @@ public class StartPageAct extends AppCompatActivity {
                 @Override
                 public void onSignUpClicked() {
                     startActivity(new Intent(StartPageAct.this, SignupActivity.class));
+
+                }
+
+                @Override
+                public void onGoogleClicked() {
+                    signIn();
+
+                }
+
+                @Override
+                public void onFacebokClicked() {
+                    fbLogin();
 
                 }
             });
@@ -135,6 +158,7 @@ public class StartPageAct extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(getApplication());
         createKeyHash(StartPageAct.this, getPackageName());
+
     }
 
     private void fbLogin() {
@@ -213,12 +237,7 @@ public class StartPageAct extends AppCompatActivity {
 
                     LoginManager.getInstance().logOut();
 
-                    UserPrefHelper.getInstance(StartPageAct.this).setUserData(userDetailsArg);
-
-                    Intent intent = new Intent(StartPageAct.this, MobileValidateAct.class);
-                    intent.putExtra("name", userDetailsArg.userFirstName);
-                    startActivity(intent);
-
+                    registerUSer(userDetailsArg);
 
                 } catch (JSONException e) {
 //                    Toast.makeText(StartPageAct.this, "Login Failed", Toast.LENGTH_SHORT).show();
@@ -230,6 +249,16 @@ public class StartPageAct extends AppCompatActivity {
         request.setParameters(parameters);
         request.executeAsync();
 //        }
+    }
+
+    private void registerUSer(UserDetailsArg userDetailsArg) {
+
+        UserPrefHelper.getInstance(StartPageAct.this).setUserData(userDetailsArg);
+
+        Intent intent = new Intent(StartPageAct.this, MobileValidateAct.class);
+        intent.putExtra("name", userDetailsArg.userFirstName);
+        startActivity(intent);
+
     }
 
 
@@ -294,12 +323,7 @@ public class StartPageAct extends AppCompatActivity {
             }
         }
 
-        UserPrefHelper.getInstance(StartPageAct.this).setUserData(userDetailsArg);
-
-        Intent intent = new Intent(StartPageAct.this, MobileValidateAct.class);
-        intent.putExtra("name", userDetailsArg.userFirstName);
-        startActivity(intent);
-
+        registerUSer(userDetailsArg);
 
 //        Log.d("StartPage", "Account: " + account);
     }

@@ -45,14 +45,17 @@
 
         </activity>
         <activity android:name=".GoThroughAct" />
-        <activity android:name=".HomeAct" />
+        <activity
+            android:name=".HomeAct"
+            android:launchMode="singleInstance" />
         <activity android:name=".ContactUsAct" />
         <activity android:name=".DetailsAct" />
         <activity android:name=".DemoEditAct" />
         <activity android:name=".LoginAct" />
         <activity android:name=".StartPageAct" />
-        <activity android:name=".SearchViewAct"
-            android:theme="@style/AppTheme.TransparentWhite"/>
+        <activity
+            android:name=".SearchViewAct"
+            android:theme="@style/AppTheme.TransparentWhite" />
         <activity
             android:name=".WriteReview"
             android:theme="@style/AppTheme.TransparentWhite" />

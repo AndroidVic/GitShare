@@ -35,6 +35,7 @@ import net.promasoft.trawellmate.util.VerifyOtpDialog;
 
 public class SignupActivity extends AppCompatActivity {
 
+    public static final int OTP_REQ_CODE = 1111;
     TextView mVerifyMobile;
     VerifyOtpDialog verifyOtpDialog;
     String msg = "Invalid number";
@@ -56,6 +57,7 @@ public class SignupActivity extends AppCompatActivity {
     private boolean mMobileVerifiedStatus = false;
     private boolean mEmailValidStatus = false;
     private String VerifiedEmailID = "";
+    private boolean MobileVerified = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +94,16 @@ public class SignupActivity extends AppCompatActivity {
                 @Override
                 public void onSignUpClicked() {
                     dialogLogin.closePage();
+                }
+
+                @Override
+                public void onGoogleClicked() {
+
+                }
+
+                @Override
+                public void onFacebokClicked() {
+
                 }
             });
             dialogLogin.showPage();
@@ -167,7 +179,11 @@ public class SignupActivity extends AppCompatActivity {
                             if (validateFieldEmpty(mTextInputPassword, "Enter your password")) {
                                 if (validateFieldEmpty(mTextInputCpassword, "Enter confirm password")) {
                                     if (checkPassword(mTextInputCpassword, "Password doesn't match")) {
-                                        submitRegister();
+                                        if (MobileVerified) {
+                                            submitRegister();
+                                        } else {
+                                            Toast.makeText(SignupActivity.this, "Mobile not verified", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                 }
                             }
@@ -227,13 +243,13 @@ public class SignupActivity extends AppCompatActivity {
         return true;
     }
 
-    public void processValidateNumberOtp() {
+    public void processValidateNumberOtp(ValidatMobileResult mobileResult) {
         final String checkNo = mPhone.getText().toString().trim();
-
         Intent intent = new Intent(getApplicationContext(), VerifyOtp.class);
+        intent.putExtra("needReturn", true);
         intent.putExtra("mobile", checkNo);
-        startActivity(intent);
-
+        intent.putExtra("tempid", mobileResult.getData().getTempid());
+        startActivityForResult(intent, OTP_REQ_CODE);
     }
 
     public void checkMobileDuplication(String mobile) {
@@ -242,14 +258,9 @@ public class SignupActivity extends AppCompatActivity {
         new LoginReqsVly().checkMobileDuplication(SignupActivity.this, mobile, new LoginReqsVly.VolleyCallback() {
             @Override
             public void onSuccess(String result) {
-
                 ValidatMobileResult mobileResult = new Gson().fromJson(result, ValidatMobileResult.class);
                 if (mobileResult.getStatus().equalsIgnoreCase(AppConstant.SUCCESS)) {
-                    mTextInputPhone.setError(null);
-                    mMobileVerifiedStatus = true;
-                    mMobileCheckView.setVisibility(View.VISIBLE);
-                    mMobileCheckView.check();
-                    mVerifyMobile.setVisibility(View.GONE);
+                    processValidateNumberOtp(mobileResult);
                 } else {
                     mMobileVerifiedStatus = false;
                     mMobileCheckView.setVisibility(View.GONE);
@@ -379,5 +390,26 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        if (requestCode == OTP_REQ_CODE) {
+            try {
+                MobileVerified = data.getBooleanExtra("numberVerified", false);
+                if (MobileVerified) {
+                    mTextInputPhone.setEnabled(false);
+                    mTextInputPhone.setError(null);
+                    mMobileVerifiedStatus = true;
+                    mMobileCheckView.setVisibility(View.VISIBLE);
+                    mMobileCheckView.check();
+                    mVerifyMobile.setVisibility(View.GONE);
+                }
+            } catch (Exception e) {
+
+            }
+
+        }
+    }
 
 }

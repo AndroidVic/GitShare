@@ -14,12 +14,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.auth.api.credentials.HintRequest;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.gson.Gson;
 
+import net.promasoft.trawellmate.args.ValidatMobileResult;
+import net.promasoft.trawellmate.ntwk.LoginReqsVly;
+import net.promasoft.trawellmate.util.AppConstant;
 import net.promasoft.trawellmate.util.DelayHelper;
+import net.promasoft.trawellmate.util.LoadingScreen;
 import net.promasoft.trawellmate.util.ToastHelper;
 
 public class MobileValidateAct extends AppCompatActivity {
@@ -29,6 +35,7 @@ public class MobileValidateAct extends AppCompatActivity {
     private EditText numberEt;
     private TextView nameEt;
     private String mNumber = "";
+    private LoadingScreen loadingScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,7 @@ public class MobileValidateAct extends AppCompatActivity {
 
             }
         });
+        loadingScreen = new LoadingScreen(MobileValidateAct.this);
 
         nameEt = findViewById(R.id.ID_mobile_valid_name);
         String name = getIntent().getStringExtra("name");
@@ -56,9 +64,7 @@ public class MobileValidateAct extends AppCompatActivity {
         verify.setOnClickListener(view -> {
 //            finish();
             if (checkIsMobile(numberEt.getText().toString())) {
-                Intent intent = new Intent(MobileValidateAct.this, VerifyOtp.class);
-                intent.putExtra("number", mNumber);
-                startActivity(intent);
+                checkMobileDuplication(numberEt.getText().toString());
             }
 
         });
@@ -68,6 +74,7 @@ public class MobileValidateAct extends AppCompatActivity {
             finish();
         });
 
+        AppConstant.MOBILE_VALID_ACT = MobileValidateAct.this;
     }
 
     private boolean checkIsMobile(String mobile) {
@@ -108,6 +115,49 @@ public class MobileValidateAct extends AppCompatActivity {
                 numberEt.setSelection(cred.getId().length());
             }
         }
+    }
+
+
+    public void checkMobileDuplication(String mobile) {
+
+        loadingScreen.showLoading();
+        new LoginReqsVly().checkMobileDuplication(MobileValidateAct.this, mobile, new LoginReqsVly.VolleyCallback() {
+            @Override
+            public void onSuccess(String result) {
+                ValidatMobileResult mobileResult = new Gson().fromJson(result, ValidatMobileResult.class);
+                if (mobileResult.getStatus().equalsIgnoreCase(AppConstant.SUCCESS)) {
+                    processValidateNumberOtp(mobileResult);
+                    numberEt.setError(null);
+                } else {
+                    numberEt.setError(mobileResult.getMessage());
+                }
+                loadingScreen.cancelLoading();
+            }
+
+            @Override
+            public void onRequestError(VolleyError errorMessage) {
+                loadingScreen.cancelLoading();
+
+            }
+
+            @Override
+            public void onIntrnError(String errorMessage) {
+                loadingScreen.cancelLoading();
+
+            }
+        });
+
+    }
+
+    private void processValidateNumberOtp(ValidatMobileResult mobileResult) {
+        Intent intent = new Intent(MobileValidateAct.this, VerifyOtp.class);
+        intent.putExtra("mobile", mNumber);
+        try {
+            intent.putExtra("tempid", mobileResult.getData().getTempid());
+        } catch (Exception e) {
+            Toast.makeText(this, "Data Error, please try again", Toast.LENGTH_SHORT).show();
+        }
+        startActivity(intent);
     }
 
 }

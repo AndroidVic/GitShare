@@ -3,6 +3,7 @@ package net.promasoft.trawellmate.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,19 +14,30 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
+
+import com.android.volley.VolleyError;
+import com.google.gson.Gson;
 
 import net.promasoft.trawellmate.ForgotPAsswordAct;
 import net.promasoft.trawellmate.HomeAct;
 import net.promasoft.trawellmate.R;
 import net.promasoft.trawellmate.SignupActivity;
+import net.promasoft.trawellmate.StartPageAct;
+import net.promasoft.trawellmate.argapp.UserDetailsArg;
+import net.promasoft.trawellmate.args.ForgotPassResult;
+import net.promasoft.trawellmate.args.LoginDetails;
 import net.promasoft.trawellmate.db.SharedPrefHelper;
+import net.promasoft.trawellmate.db.UserPrefHelper;
 import net.promasoft.trawellmate.dsgn.CustomTextLink;
+import net.promasoft.trawellmate.ntwk.LoginReqsVly;
 
 
 public class DialogLogin extends RelativeLayout {
 
+    private LoadingScreen loadingScreen;
     private OnLoginListner mLoginListner;
     private Activity mContext;
     private static ViewGroup mRoot;
@@ -48,6 +60,7 @@ public class DialogLogin extends RelativeLayout {
         mChild = mInflater.inflate(R.layout.dialog_login, this, true);
         LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         lp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+        loadingScreen = new LoadingScreen(mContext);
 
         RelativeLayout overLay = mChild.findViewById(R.id.ID_login_overlay);
         overLay.setVisibility(overlayNeeded ? VISIBLE : GONE);
@@ -74,7 +87,18 @@ public class DialogLogin extends RelativeLayout {
 
         mUserName = findViewById(R.id.ID_login_username);
         mUserPassword = findViewById(R.id.ID_login_password);
-
+        CardView diaFacebk = mChild.findViewById(R.id.ID_dia_facebk);
+        diaFacebk.setOnClickListener(view -> {
+            if (mLoginListner != null) {
+                mLoginListner.onFacebokClicked();
+            }
+        });
+        CardView diaGmail = mChild.findViewById(R.id.ID_dia_gmail);
+        diaGmail.setOnClickListener(view -> {
+            if (mLoginListner != null) {
+                mLoginListner.onGoogleClicked();
+            }
+        });
 
     }
 
@@ -118,8 +142,8 @@ public class DialogLogin extends RelativeLayout {
         passwordCard.setVisibility(View.INVISIBLE);
         final Button loginBt = findViewById(R.id.ID_login_signin);
         loginBt.setVisibility(View.INVISIBLE);
-        final CustomTextLink textLink = findViewById(R.id.ID_login_forget_pass);
-        textLink.setVisibility(View.INVISIBLE);
+        CustomTextLink frgtPassEmailSubmit = findViewById(R.id.ID_login_forget_pass);
+        frgtPassEmailSubmit.setVisibility(View.INVISIBLE);
         final TextView signinwithText = findViewById(R.id.Ida_signn_withtext);
         signinwithText.setVisibility(View.INVISIBLE);
         final LinearLayout signinwithCard = findViewById(R.id.Ida_signn_with);
@@ -128,7 +152,7 @@ public class DialogLogin extends RelativeLayout {
         startAnim(usernameCard, 200, R.anim.slide_up);
         startAnim(passwordCard, 250, R.anim.slide_up);
         startAnim(loginBt, 300, R.anim.slide_up);
-        startAnim(textLink, 350, R.anim.slide_up);
+        startAnim(frgtPassEmailSubmit, 350, R.anim.slide_up);
         startAnim(signinwithText, 400, R.anim.slide_up);
         startAnim(signinwithCard, 450, R.anim.slide_up);
 
@@ -151,9 +175,10 @@ public class DialogLogin extends RelativeLayout {
             }
         });
 
-        CustomTextLink frgtPassEmailSubmit = findViewById(R.id.ID_login_forget_pass);
         frgtPassEmailSubmit.setOnClickListener(view -> {
-            mContext.startActivity(new Intent(mContext, ForgotPAsswordAct.class));
+            Intent intent = new Intent(mContext, ForgotPAsswordAct.class);
+            mContext.startActivity(intent);
+
         });
 
     }
@@ -166,16 +191,73 @@ public class DialogLogin extends RelativeLayout {
         } else if (userpass.isEmpty()) {
             new ToastHelper(mContext, "Enter Password").setDuration(1000).show();
         } else {
-            if (userName.toLowerCase().equals("john") && userpass.toLowerCase().equals("123")) {
-                if (mLoginListner != null) {
-                    mLoginListner.onLoginSuccess();
-                }
 
-            } else {
-                new ToastHelper(mContext, "Invalid Credentials").setDuration(1000).show();
-            }
+            checkUser(userName, userpass);
+
+
         }
 
+    }
+
+    private void checkUser(String userName, String userpass) {
+        loadingScreen.showLoading();
+        new LoginReqsVly().getLogin(mContext, userName, userpass, new LoginReqsVly.VolleyCallback() {
+            @Override
+            public void onSuccess(String result) {
+                LoginDetails loginDetails = new Gson().fromJson(result, LoginDetails.class);
+
+                new AlertMsgDialog(mContext, AlertMsgDialog.DIA_INFO, "" + loginDetails.getStatus(), "" + loginDetails.getMessage(), "ok", new AlertMsgDialog.ActionListner() {
+                    @Override
+                    public void onPositive() {
+                        if (loginDetails.getStatus().equalsIgnoreCase(AppConstant.SUCCESS)) {
+
+                            try {
+                                UserDetailsArg userDetailsArg = new UserDetailsArg();
+                                userDetailsArg.userFullName = loginDetails.getDataLogin().getUserDetails().getFname();
+                                userDetailsArg.userFirstName = loginDetails.getDataLogin().getUserDetails().getFname();
+                                userDetailsArg.userMiddleName = loginDetails.getDataLogin().getUserDetails().getMname();
+                                userDetailsArg.userLastName = loginDetails.getDataLogin().getUserDetails().getLname();
+                                userDetailsArg.userEmail = loginDetails.getDataLogin().getUserDetails().getEmail();
+
+                                userDetailsArg.userPhotUri = loginDetails.getDataLogin().getUserDetails().getUserimage();
+
+                                UserPrefHelper.getInstance(mContext).setUserData(userDetailsArg);
+
+                            } catch (Exception e) {
+
+                            }
+
+
+                            if (mLoginListner != null) {
+                                mLoginListner.onLoginSuccess();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onNegative() {
+
+                    }
+                }).showPage();
+
+
+                loadingScreen.cancelLoading();
+            }
+
+            @Override
+            public void onRequestError(VolleyError errorMessage) {
+                loadingScreen.cancelLoading();
+                Toast.makeText(mContext, "Error Occured", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onIntrnError(String errorMessage) {
+                loadingScreen.cancelLoading();
+                Toast.makeText(mContext, "" + errorMessage, Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
     private void startAnim(final View view, int delay, final int anim) {
@@ -202,6 +284,11 @@ public class DialogLogin extends RelativeLayout {
         void onLoginSuccess();
 
         void onSignUpClicked();
+
+        void onGoogleClicked();
+
+        void onFacebokClicked();
     }
+
 
 }

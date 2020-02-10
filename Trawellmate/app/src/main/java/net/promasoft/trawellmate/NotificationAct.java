@@ -45,17 +45,18 @@ public class NotificationAct extends AppCompatActivity {
 
     private void retrievePackagesData() {
         // mlist = new ArrayList<>();
-        mlist.add(new DataNotification("Costa Rica", "Rs.85,000","Grand European Tour","Mar 12- Mar 20","5 mins ago"));
-        mlist.add(new DataNotification("Costa Rica", "Rs.85,000","Grand European Tour","Mar 12- Mar 20","5 mins ago"));
-        mlist.add(new DataNotification("Costa Rica", "Rs.85,000","Grand European Tour","Mar 12- Mar 20","5 mins ago"));
-        mlist.add(new DataNotification("Costa Rica", "Rs.85,000","Grand European Tour","Mar 12- Mar 20","5 mins ago"));
-        mlist.add(new DataNotification("Costa Rica", "Rs.85,000","Grand European Tour","Mar 12- Mar 20","5 mins ago"));
-        mlist.add(new DataNotification("Costa Rica", "Rs.85,000","Grand European Tour","Mar 12- Mar 20","5 mins ago"));
-        mlist.add(new DataNotification("Costa Rica", "Rs.85,000","Grand European Tour","Mar 12- Mar 20","5 mins ago"));
-        mlist.add(new DataNotification("Costa Rica", "Rs.85,000","Grand European Tour","Mar 12- Mar 20","5 mins ago"));
-        mlist.add(new DataNotification("Costa Rica", "Rs.85,000","Grand European Tour","Mar 12- Mar 20","5 mins ago"));
-        mlist.add(new DataNotification("Costa Rica", "Rs.85,000","Grand European Tour","Mar 12- Mar 20","5 mins ago"));
-        mlist.add(new DataNotification("Costa Rica", "Rs.85,000","Grand European Tour","Mar 12- Mar 20","5 mins ago"));
+        mlist.add(new DataNotification("Costa Rica", "Rs.85,000", "Grand European Tour", "Mar 12- Mar 20", "5 mins ago"));
+        mlist.add(new DataNotification("Costa Rica", "Rs.85,000", "Grand European Tour", "Mar 12- Mar 20", "5 mins ago"));
+        mlist.add(new DataNotification("Costa Rica", "Rs.85,000", "Grand European Tour", "Mar 12- Mar 20", "5 mins ago"));
+        mlist.add(new DataNotification("Costa Rica", "Rs.85,000", "Grand European Tour", "Mar 12- Mar 20", "5 mins ago"));
+        mlist.add(new DataNotification("Costa Rica", "Rs.85,000", "Grand European Tour", "Mar 12- Mar 20", "5 mins ago"));
+        mlist.add(new DataNotification("Costa Rica", "Rs.85,000", "Grand European Tour", "Mar 12- Mar 20", "5 mins ago"));
+        mlist.add(new DataNotification("Costa Rica", "Rs.85,000", "Grand European Tour", "Mar 12- Mar 20", "5 mins ago"));
+        mlist.add(new DataNotification("Costa Rica", "Rs.85,000", "Grand European Tour", "Mar 12- Mar 20", "5 mins ago"));
+        mlist.add(new DataNotification("Costa Rica", "Rs.85,000", "Grand European Tour", "Mar 12- Mar 20", "5 mins ago"));
+        mlist.add(new DataNotification("Costa Rica", "Rs.85,000", "Grand European Tour", "Mar 12- Mar 20", "5 mins ago"));
+        mlist.add(new DataNotification("Costa Rica", "Rs.85,000", "Grand European Tour", "Mar 12- Mar 20", "5 mins ago"));
+
     }
 
 }

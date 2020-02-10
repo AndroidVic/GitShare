@@ -92,11 +92,11 @@ public class LoginReqsVly {
         VolleyController.getInstance(context).add(postRequest);
     }
 
-    public void getLogin(String userName, String password, Context context, VolleyCallback callback) {
+    public void getLogin( Context context,String userName, String password, VolleyCallback callback) {
         Map<String, String> params = new HashMap<String, String>();
-        params.put("email", "karthik@gmail.com");
-        params.put("password", "karthik");
-        request(context, "", params, callback);
+        params.put("mobile", userName);
+        params.put("password", password);
+        request(context, "user_login", params, callback);
     }
 
     public void checkMobileDuplication(Context context, String mobile, VolleyCallback callback) {
@@ -111,7 +111,7 @@ public class LoginReqsVly {
         request(context, "email_stat", params, callback);
     }
 
-       public void register(Context context, RegisterArgs details, VolleyCallback callback) {
+    public void register(Context context, RegisterArgs details, VolleyCallback callback) {
         Map<String, String> params = new HashMap<String, String>();
 
         params.put("nickname", details.nickname);
@@ -120,14 +120,29 @@ public class LoginReqsVly {
         params.put("email", details.email);
         params.put("password", details.password);
         params.put("platform", Build.VERSION.RELEASE);
-        params.put("imei",  AppManager.getIMEI(context));
-        params.put("brand_name",  Build.BRAND);
-        params.put("model_name",  Build.MODEL);
+        params.put("imei", AppManager.getIMEI(context));
+        params.put("brand_name", Build.BRAND);
+        params.put("model_name", Build.MODEL);
 
         request(context, "register", params, callback);
     }
 
+    public void forgotPaswword(Context context, String email, VolleyCallback callback) {
 
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("email", email);
+        request(context, "forgot_password", params, callback);
+
+    }
+
+    public void otpVerification(Context context, long tempid, String mobile_number, String otp, VolleyCallback callback) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("tempid",""+ tempid);
+        params.put("mobile_number", mobile_number);
+        params.put("otp", otp);
+
+        request(context, "verify_mobile_otp", params, callback);
+    }
 
     public interface VolleyCallback {
 
